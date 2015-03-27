@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-    root 'schedules#index'
+    root 'schedules#new'
     
-    resources :users do
-        resources :schedules do
-            resources :courses
-        end
+    resources :schedules do
+        resources :courses
     end
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
