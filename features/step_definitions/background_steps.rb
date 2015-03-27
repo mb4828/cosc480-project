@@ -1,4 +1,4 @@
-Given /^these courses:$/i do |table|
+Given /^this|these courses|input:$/i do |table|
   table.hashes.each do |fhash|
     if fhash.has_key? "desc"
       fhash["description"] = fhash.delete("desc")
@@ -24,7 +24,23 @@ Given /^these courses:$/i do |table|
     if fhash.has_key? "sat"
       fhash["saturday"] = fhash.delete("sat")
     end
+    if fhash.has_key? "start"
+      fhash["start_time"] = fhash.delete("start")
+    end
+    if fhash.has_key? "end"
+      fhash["end_time"] = fhash.delete("end")
+    end
+    if fhash.has_key? "order"
+      fhash["ordering"] = fhash.delete("order")
+    end
 
+    if fhash.has_key? "first" and fhash.has_key? "last" and fhash.has_key? "email"  # user object present!
+        temphash["first_name"] = fhash.delete("first")
+        temphash["last_name"] = fhash.delete("last")
+        temphash["email"] = fhash.delete("email")
+        User.create!(temphash) 
+    end
+    
     Course.create!(fhash)
   end
 end
