@@ -1,4 +1,73 @@
 %div.col-md-4.formcontainer
+
   %form#courseform
+
     %div#coursescontainer
+
+      %div.formbox
+        = form_for (@schedule, @course) do |f|
+
+          %div.row.formgroup
+            %div.col-md-4= f.label :name
+            %div.col-md-8= f.text_field(:name, placeholder: 'e.g. Software Engineering')
+            %div.help-block.with-errors
+
+          %div.row.formgroup
+            %div.col-md-4= f.label :description
+            %div.col-md-8= f.text_field(:description, placeholder: 'e.g. COSC 480')
+            %div.help-block.with-errors
+
+          %div.formgroup
+            %div.col-md-12
+              %div.btn-group.btn-group-justified{:role => "group"}
+                %button#sun.btn.btn-default{"aria-pressed" => "false", :autocomplete => "off", |
+                "data-toggle" => "button", :onclick => "checkToggle(0,'sun')", :type => "button"} S
+
+                %button#mon.btn.btn-default{"aria-pressed" => "false", :autocomplete => "off", |
+                "data-toggle" => "button", :onclick => "checkToggle(0,'mon')", :type => "button"} M
+
+                %button#tue.btn.btn-default{"aria-pressed" => "false", :autocomplete => "off", |
+                "data-toggle" => "button", :onclick => "checkToggle(0,'tue')", :type => "button"} T
+
+                %button#wed.btn.btn-default{"aria-pressed" => "false", :autocomplete => "off", |
+                "data-toggle" => "button", :onclick => "checkToggle(0,'wed')", :type => "button"} W
+
+                %button#thu.btn.btn-default{"aria-pressed" => "false", :autocomplete => "off", |
+                "data-toggle" => "button", :onclick => "checkToggle(0,'thu')", :type => "button"} R
+
+                %button#fri.btn.btn-default{"aria-pressed" => "false", :autocomplete => "off", |
+                "data-toggle" => "button", :onclick => "checkToggle(0,'fri')", :type => "button"} F
+
+                %button#sat.btn.btn-default{"aria-pressed" => "false", :autocomplete => "off", |
+                "data-toggle" => "button", :onclick => "checkToggle(0,'sat')", :type => "button"} S
+
+                %div.checkboxes
+                  = f.check_box#sun-box :sun
+                  = f.check_box#mon-box :mon
+                  = f.check_box#tue-box :tue
+                  = f.check_box#wed-box :wed
+                  = f.check_box#thu-box :thu
+                  = f.check_box#fri-box :fri
+                  = f.check_box#sat-box :sat
+
+            %div.row
+              %div.col-md-6.form-group
+                = f.label :start_time
+                = f.text_field :start_time
+              %div.col-md-6.form-group
+                = f.label :end_time
+                = f.text_field :end_time
+
+            %div.row{:style => 'text-align:center'}
+              %button.btn.btn-danger.btn-sm{:onclick => "cancelCourse(0)", :type => "button"}
+                %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
+                Discard changes
+
+              %button.btn.btn-success.btn-sm{:onclick => "saveCourse(0);createSchedule(0)", :type => "button"}
+                %span#course-0-add.glyphicon.glyphicon-plus{"aria-hidden" => "true"}
+                Add to schedule
+              
+
+
+
 

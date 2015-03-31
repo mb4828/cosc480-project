@@ -1,7 +1,6 @@
 -# this template handles course creation on a schedule
 
-%h1 Create a schedule
+%h1 Add a new course
 
 %div.row
-  = render "layouts/schedule_viz"
-  = render "layouts/schedule_form_new_course"
+  = render partial: "layouts/schedule_form_new_course", locals: {course: @course, schedule: @schedule}

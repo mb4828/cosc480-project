@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
     def new
+      byebug
       @schedule = Schedule.find(params[:schedule_id])
       @course = Course.new
     end
