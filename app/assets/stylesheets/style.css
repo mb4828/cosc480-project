@@ -1,0 +1,135 @@
+body { 
+    background: #dddddd; 
+}
+.container { /* main container for the page */
+    background: white; 
+}   
+
+/* course input form */
+#formcontainer {}
+#formheader { text-align: right; padding-bottom: 10px; }
+#addbutton { display:block; text-align:center; }
+.dispbuttons { float:right; }
+.checkboxes { display:none; }
+
+#coursescontainer { /* holds the course form and manages overflow */
+    height: inherit;
+    overflow: inherit;
+    background: #efefef;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+#coursescontainer label { font-weight: normal; }
+
+.formbox {  /* box that contains the form elements for each course */
+    padding: 10px;
+    margin: 6px 0px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    display: none;
+    background: white;
+}
+
+.formdisp {  /* box that contains the display elements for each course (the pretty version of the form) */
+    background: lightblue;
+    transition: color 0.5s ease;
+    display: none;
+}
+
+/* schedule visualization */
+#schedulecontainer { margin-bottom: 10px; }
+
+.classbox {     /* the boxes for each class on the visualized schedule */
+    position: absolute; top: 45px; left: -1px;
+    width: 100%;
+    height: 20px;
+    padding: 2px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    font-weight: normal;
+    background: lightblue;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: none;
+    user-select: none;
+    transition: color 0.5s ease;
+}
+
+.schedule > div {    /* didn't realize that this actually sets up A LOT of formatting... scope is too large but it's too late to change it now */
+    padding: 10px 0px 2px 2px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.grid { position: absolute; top: 0; left: 0; z-index: 10; }     /* "grid" of dotted lines behind the visualized courses */
+.grid table td { height: 35px; border-bottom: 1px dotted gray; }
+
+.hours table {      /* leftmost column with the hours of the day in it */
+    width: 75%;
+    margin: 0 0 0 25%;
+    font-weight: normal;
+    color: darkslategray;
+}
+.hours table td { height: 35px; }
+
+.day { height: 641px; z-index: 20; }    /* columns for each day of the week, containing the classboxes */
+
+/* 8 column hack for bootstrap */
+@media (max-width: 768px){
+    .eightcolumns .col-xs-1, .eightcolumns .col-sm-1, .eightcolumns .col-md-1  {
+        width: 12.5%;
+        *width: 12.5%;
+    }
+
+    /*.day { border-left: 1px solid gray; }*/
+
+    .btn-lg { width: 100%; }
+}
+@media (min-width: 768px) and (max-width: 992px){
+    .eightcolumns .col-xs-1, .eightcolumns .col-sm-1, .eightcolumns .col-md-1  {
+        width: 12.5%;
+        *width: 12.5%;
+    }
+
+    .grid table { width: 654px; margin-left: 92px; }
+
+    .btn-lg { width: 100%; }
+}
+
+@media (min-width: 992px) {
+    .eightcolumns .col-xs-1, .eightcolumns .col-sm-1, .eightcolumns .col-md-1 {
+        width: 12.5%;
+        *width: 12.5%;
+    }
+
+    .grid table { width: 565px; margin-left: 80px; }
+
+    #coursescontainer {
+        height: 585px;
+        overflow: scroll;
+    }
+}
+
+@media (min-width: 1200px) {
+    .eightcolumns .col-xs-1, .eightcolumns .col-sm-1, .eightcolumns .col-md-1 {
+        width: 12.5%;
+        *width: 12.5%;
+    }
+    .grid table { width: 679px; margin-left: 98px; }
+
+    #coursescontainer {
+        height: 585px;
+        overflow: scroll;
+    }
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}

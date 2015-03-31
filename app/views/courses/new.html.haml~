@@ -1,0 +1,5 @@
+%h1 Create a schedule
+
+%div.row
+  = render "layouts/schedule_viz"
+  = render "layouts/schedule_form_new_course"
