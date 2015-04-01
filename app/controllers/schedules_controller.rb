@@ -9,11 +9,11 @@ class SchedulesController < ApplicationController
     end
 
     def create
+        @schedule = Schedule.save
     end
 
-
     # All future attempts to access the main schedule will be routed here
-    def edit
+    def edit  
     end
 
     def update
