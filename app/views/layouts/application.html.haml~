@@ -10,7 +10,6 @@
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
 
     -# stylesheets
-    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", :rel => "stylesheet"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 
     -# scripts (most should be placed at the bottom for efficiency's sake!
@@ -22,5 +21,4 @@
       = yield
 
     -# more scripts
-    %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"}
     

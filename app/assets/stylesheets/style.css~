@@ -10,7 +10,7 @@ body {
 #formheader { text-align: right; padding-bottom: 10px; }
 #addbutton { display:block; text-align:center; }
 .dispbuttons { float:right; }
-/*.checkboxes { display:none; }*/
+.checkboxes { display:none; }
 
 #coursescontainer { /* holds the course form and manages overflow */
     height: inherit;

@@ -3,19 +3,20 @@
   %form#courseform
 
     %div#coursescontainer
-
-      %div.formbox
-        = form_for @course do |f|
+      %div.formbox{:style => 'display: block'}
+        =form_for [schedule, course] do |f|
 
           %div.row.formgroup
             %div.col-md-4= f.label :name
-            %div.col-md-8= f.text_field(:name, placeholder: 'e.g. Software Engineering')
-            %div.help-block.with-errors
+            %div.col-md-8
+              = f.text_field(:name, placeholder: 'e.g. Software Engineering')
+              %div.help-block.with-errors
 
           %div.row.formgroup
             %div.col-md-4= f.label :description
-            %div.col-md-8= f.text_field(:description, placeholder: 'e.g. COSC 480')
-            %div.help-block.with-errors
+            %div.col-md-8
+              = f.text_field(:description, placeholder: 'e.g. COSC 480')
+              %div.help-block.with-errors
 
           %div.formgroup
             %div.col-md-12
@@ -42,13 +43,13 @@
                 "data-toggle" => "button", :onclick => "checkToggle(0,'sat')", :type => "button"} S
 
                 %div.checkboxes
-                  = f.check_box#sun-box :sun
-                  = f.check_box#mon-box :mon
-                  = f.check_box#tue-box :tue
-                  = f.check_box#wed-box :wed
-                  = f.check_box#thu-box :thu
-                  = f.check_box#fri-box :fri
-                  = f.check_box#sat-box :sat
+                  = f.check_box :sunday
+                  = f.check_box :monday
+                  = f.check_box :tuesday
+                  = f.check_box :wednesday
+                  = f.check_box :thursday
+                  = f.check_box :friday
+                  = f.check_box :saturday
 
             %div.row
               %div.col-md-6.form-group
@@ -59,11 +60,11 @@
                 = f.text_field :end_time
 
             %div.row{:style => 'text-align:center'}
-              %button.btn.btn-danger.btn-sm{:onclick => "cancelCourse(0)", :type => "button"}
+              = button_tag "Cancel", :type => 'button', :class => 'btn btn-danger btn-sm' do
                 %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
                 Discard changes
 
-              %button.btn.btn-success.btn-sm{:onclick => "saveCourse(0);createSchedule(0)", :type => "button"}
+              = button_tag :class => 'btn btn-success btn-sm' do
                 %span#course-0-add.glyphicon.glyphicon-plus{"aria-hidden" => "true"}
                 Add to schedule
               
