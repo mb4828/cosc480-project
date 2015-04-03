@@ -4,7 +4,7 @@
 
     %div#coursescontainer
       %div.formbox{:style => 'display: block'}
-        =form_for [schedule, course] do |f|
+        = form_for([schedule, course], :method => "POST") do |f|
 
           %div.row.formgroup
             %div.col-md-4= f.label :name
@@ -43,13 +43,13 @@
                 "data-toggle" => "button", :onclick => "checkToggle(0,'sat')", :type => "button"} S
 
                 %div.checkboxes
-                  = f.check_box :sunday, :id => 'sun'
-                  = f.check_box :monday, :id => 'mon'
-                  = f.check_box :tuesday, :id => 'tue'
-                  = f.check_box :wednesday, :id => 'wed'
-                  = f.check_box :thursday, :id => 'thu'
-                  = f.check_box :friday, :id => 'fri'
-                  = f.check_box :saturday, :id => 'sat'
+                  = f.check_box :sunday, :id => 'sun-check'
+                  = f.check_box :monday, :id => 'mon-check'
+                  = f.check_box :tuesday, :id => 'tue-check'
+                  = f.check_box :wednesday, :id => 'wed-check'
+                  = f.check_box :thursday, :id => 'thu-check'
+                  = f.check_box :friday, :id => 'fri-check'
+                  = f.check_box :saturday, :id => 'sat-check'
 
             %div.row
               %div.col-md-6.form-group
@@ -60,15 +60,12 @@
                 = f.text_field :end_time
 
             %div.row{:style => 'text-align:center'}
-              = button_tag "Cancel", :type => 'button', :class => 'btn btn-danger btn-sm' do
-                %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
-                Discard changes
+              =# button_tag "Cancel", :type => 'button', :class => 'btn btn-danger btn-sm' do
+              =#  %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
+              =#  Discard changes
 
-              = button_tag :class => 'btn btn-success btn-sm' do
+              = f.submit :class => 'btn btn-success btn-sm', :method => "POST" do
                 %span#course-0-add.glyphicon.glyphicon-plus{"aria-hidden" => "true"}
                 Add to schedule
-              
-
-
 
 

@@ -1,0 +1,10 @@
+%div.col-md-4.formcontainer
+
+  %form#courseform
+
+    %div#coursescontainer
+      %div.formbox{:style => 'display: block'}
+        = form_for [schedule, course] do |f|
+          = f.submit 'Submit form'
+
+

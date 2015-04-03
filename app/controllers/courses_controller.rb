@@ -1,13 +1,14 @@
 class CoursesController < ApplicationController
     def new
-      byebug
       @schedule = Schedule.find(params[:schedule_id])
       @course = Course.new
     end
 
     def create
-      byebug
       course = Course.new(create_update_params)
+
+      # don't forget to set order!!!
+
       if course.save
         flash[:notice] = "New course #{course.name} successfully created"
         redirect_to edit_schedule_path
@@ -22,7 +23,6 @@ class CoursesController < ApplicationController
     end
     
     def update
-        byebug
         @course = Course.find(params[:id])
         if @course.update(create_update_params)
           flash[:notice] = "Update was successful"
@@ -34,9 +34,9 @@ class CoursesController < ApplicationController
     end
 
     def destroy
-        @course = Course.find(params[:id])
-        @course.destroy
-        if @course.destroy(create_update_params)
+        cid = params[:id]
+        Course.find(cid).destroy
+        if not Course.exists?(cid)
           flash[:notice] = "Successfully removed"
           redirect_to edit_schedule_path
         else
