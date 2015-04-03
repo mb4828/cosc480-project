@@ -43,13 +43,13 @@
                 "data-toggle" => "button", :onclick => "checkToggle(0,'sat')", :type => "button"} S
 
                 %div.checkboxes
-                  = f.check_box :sunday
-                  = f.check_box :monday
-                  = f.check_box :tuesday
-                  = f.check_box :wednesday
-                  = f.check_box :thursday
-                  = f.check_box :friday
-                  = f.check_box :saturday
+                  = f.check_box :sunday, :id => 'sun'
+                  = f.check_box :monday, :id => 'mon'
+                  = f.check_box :tuesday, :id => 'tue'
+                  = f.check_box :wednesday, :id => 'wed'
+                  = f.check_box :thursday, :id => 'thu'
+                  = f.check_box :friday, :id => 'fri'
+                  = f.check_box :saturday, :id => 'sat'
 
             %div.row
               %div.col-md-6.form-group

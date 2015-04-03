@@ -1,0 +1,55 @@
+%div.col-md-4.formcontainer
+  %form#courseform
+
+    %div#formheader
+      %button{:type => 'button', :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', |
+      'data-target' => '#confirmationModal', 'data-backdrop' => 'static'} I'm finished!
+
+    %div#coursescontainer
+      / course list
+      %div.formbox.formdisp.noselect
+        %div.dispbuttons
+          %a{:class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => bottom, 'title' => 'edit'}
+            %span.glyphicon.glyphicon-pencil
+          %a{:class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => bottom, 'title' => 'delete'}
+            %span.glyphicon.glyphicon-trash
+
+        = @courses.each do |c|
+          %h4= c.name
+          %h5= c.description
+          %p = c.get_tag
+      
+      / button to add courses to the schedule
+      %div#addbutton.formbox
+        = link_to new_schedule_course_path(@schedule) do
+          %button{:type => 'button', :class => 'btn btn-link btn-block'} 
+            %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => "true"}
+            Add a class
+
+    / modal to collect user information and submit the form
+    %div#confirmationModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "confirmationModalLabel", |
+    :role => "dialog", :tabindex => "-1"}
+      %div.modal-dialog
+        %div.modal-content
+          %div.modal-header
+            %h4#myModalLabel.modal-title One more thing...
+          %div.modal-body
+            %p Please enter your name and e-mail address to save your schedule.
+            %br
+            %div.form-group
+              %label{:for => "user-first-name"} First name
+              %input#user-first-name.form-control{:type => "text"}
+                %div.help-block.with-errors
+            %div.form-group
+              %label{:for => "user-last-name"} Last name
+              %input#user-last-name.form-control{:type => "text"}
+                %div.help-block.with-errors
+            %div.form-group
+              %label{:for => "user-email"} E-mail address
+              %input#user-email.form-control{:type => "email"}
+                %div.help-block.with-errors
+            %br
+          %div.modal-footer
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Go back
+            %input.btn.btn-primary{:type => "submit", :value => "Save my schedule"}
+
