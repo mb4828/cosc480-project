@@ -4,7 +4,7 @@
 
     %div#coursescontainer
       %div.formbox{:style => 'display: block'}
-        =form_for [schedule, course] do |f|
+        = form_for [schedule, course] do |f|
 
           %div.row.formgroup
             %div.col-md-4= f.label :name
@@ -60,15 +60,12 @@
                 = f.text_field :end_time
 
             %div.row{:style => 'text-align:center'}
-              = button_tag "Cancel", :type => 'button', :class => 'btn btn-danger btn-sm' do
-                %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
-                Discard changes
+              =# button_tag "Cancel", :type => 'button', :class => 'btn btn-danger btn-sm' do
+              =#  %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
+              =#  Discard changes
 
-              = button_tag :class => 'btn btn-success btn-sm' do
+              = f.submit :class => 'btn btn-success btn-sm' do
                 %span#course-0-add.glyphicon.glyphicon-plus{"aria-hidden" => "true"}
                 Add to schedule
-              
-
-
 
 

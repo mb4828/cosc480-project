@@ -1,12 +1,15 @@
 class CoursesController < ApplicationController
     def new
+      byebug
       @schedule = Schedule.find(params[:schedule_id])
       @course = Course.new
     end
 
     def create
-      if @course = Course.create(create_update_params)
-        flash[:notice] = "New course #{@Course.name} successfully created"
+      byebug
+      course = Course.new(create_update_params)
+      if course.save
+        flash[:notice] = "New course #{course.name} successfully created"
         redirect_to edit_schedule_path
       else
         flash[:warning] = "Course couldn't be created"
@@ -19,6 +22,7 @@ class CoursesController < ApplicationController
     end
     
     def update
+        byebug
         @course = Course.find(params[:id])
         if @course.update(create_update_params)
           flash[:notice] = "Update was successful"
