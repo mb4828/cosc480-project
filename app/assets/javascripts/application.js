@@ -16,3 +16,4 @@
 //= require formscripts
 //= require schedulescripts
 //= require turbolinks
+//= require_tree .

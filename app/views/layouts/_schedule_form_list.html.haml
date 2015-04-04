@@ -10,8 +10,9 @@
       = courses.each do |c|
         %div.formbox.formdisp.noselect
           %div.dispbuttons
-            = link_to edit_schedule_course_path(schedule.id, c.id), :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'edit' do
+            = link_to edit_schedule_course_path(schedule.id, c.id), :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Edit' do
               %span.glyphicon.glyphicon-pencil
+
             =# %a{:class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'delete'}
             =#  %span.glyphicon.glyphicon-trash
           

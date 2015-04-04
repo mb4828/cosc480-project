@@ -1,6 +1,9 @@
-%h1 Create (edit) a schedule
+%h3 Create a schedule
 
 %div.row
   = render "layouts/schedule_viz"
   = render partial: "layouts/schedule_form_list", locals: {courses: @courses, schedule: @schedule}
-    
+
+/ enable bootstrap tooltips
+  :javascript
+    $('[data-toggle="tooltip"]').tooltip();

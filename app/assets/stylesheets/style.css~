@@ -5,12 +5,35 @@ body {
     background: white; 
 }   
 
+h1 {
+  font-style: italic;
+  font-weight: bold;
+}
+
+h1 small {
+  font-style: normal;
+  font-weight: normal;
+}
+
+h4 {
+  font-weight: bold;
+}
+
+.footer {
+  margin-top: 50px;
+  padding: 20px;
+  border-top: 1px solid lightgray;
+  text-align: center;
+}
+
+
 /* course input form */
+
 #formcontainer {}
 #formheader { text-align: right; padding-bottom: 10px; }
 #addbutton { display:block; text-align:center; }
 .dispbuttons { float:right; }
-/*.checkboxes { display:none; }*/
+.bootstrap-button { display:none; }
 
 #coursescontainer { /* holds the course form and manages overflow */
     height: inherit;
@@ -35,7 +58,9 @@ body {
     transition: color 0.5s ease;
 }
 
+
 /* schedule visualization */
+
 #schedulecontainer { margin-bottom: 10px; }
 
 .classbox {     /* the boxes for each class on the visualized schedule */

@@ -1,28 +1,40 @@
 !!!
 %html{:lang => "en"}
   %head
-    -# page title
+    / page title
     %title Schedulizer
 
-    -# meta tags
+    / meta tags
     %meta{:charset => "utf-8"}
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
 
-    -# stylesheets
+    / stylesheets
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 
-    -# scripts (most should be placed at the bottom for efficiency's sake!
+    / scripts (most should be placed at the bottom for efficiency's sake!
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     
     = csrf_meta_tags
   %body
-    %p= flash[:notice] if flash[:notice]
-    %p= flash[:warning] if flash[:warning]
+       
 
     %div.container
+      %div.page-header
+        %h1 
+          Schedulizer
+          %small A scheduling app for students 
+
+      %p= flash[:notice] if flash[:notice]
+      %p= flash[:warning] if flash[:warning]
       = yield
 
-    -# more scripts
-    %script{:src => "scripts/formscripts.js"}
+      / more scripts
+      =# %script{:src => "scripts/formscripts.js"}
+
+      %div.col-md-12.footer
+        &copy; 2015 Laura Slade, Zachary Smith, Matthew Brauner
+        %br
+        Software Engineering, Colgate University
+
     
