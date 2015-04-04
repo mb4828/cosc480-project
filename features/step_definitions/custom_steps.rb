@@ -1,3 +1,9 @@
+require "rspec/matchers"
+require 'uri'
+require 'cgi'
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
+
 # via launchware.com
 RSpec::Matchers.define :appear_before do |later_content|
   match do |earlier_content|

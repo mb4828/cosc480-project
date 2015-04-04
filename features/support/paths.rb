@@ -22,13 +22,16 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
+    when /^the new schedule page$/
+        '/schedules/new'
+    
     else
       begin
         page_name =~ /^the (.*) page$/
         path_components = $1.split(/\s+/)
         self.send(path_components.push('path').join('_').to_sym)
       rescue NoMethodError, ArgumentError
-        raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+        raise "Can't find mapping from \"#{path_components.join('_')}\" to a path.\n" +
           "Now, go and add a mapping in #{__FILE__}"
       end
     end

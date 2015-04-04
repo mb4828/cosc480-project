@@ -1,3 +1,8 @@
+require 'uri'
+require 'cgi'
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
+
 Given /^this|these courses|input:$/i do |table|
   table.hashes.each do |fhash|
     if fhash.has_key? "desc"

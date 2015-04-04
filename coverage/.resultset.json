@@ -1,18 +1,18 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/csvm/cosc480-project/app/helpers/application_helper.rb": [
+      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/csvm/cosc480-project/app/helpers/users_helper.rb": [
+      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/helpers/users_helper.rb": [
         1,
         1,
         0,
         null,
         null
       ],
-      "/home/csvm/cosc480-project/app/controllers/courses_controller.rb": [
+      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/controllers/courses_controller.rb": [
         1,
         1,
         0,
@@ -78,14 +78,14 @@
         null,
         null
       ],
-      "/home/csvm/cosc480-project/app/controllers/application_controller.rb": [
+      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/home/csvm/cosc480-project/app/controllers/schedules_controller.rb": [
+      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/controllers/schedules_controller.rb": [
         1,
         1,
         null,
@@ -111,27 +111,31 @@
         null,
         1,
         null,
+        0,
         null,
         null,
+        0,
+        0,
         null,
         null,
         null,
         0,
         0,
-        0,
         null,
-        0,
-        0,
+        null,
         0,
         null,
         null,
         1,
         0,
         0,
+        0,
+        0,
+        null,
         null,
         null
       ],
-      "/home/csvm/cosc480-project/app/models/course.rb": [
+      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/models/course.rb": [
         1,
         1,
         null,
@@ -150,11 +154,11 @@
         null
       ]
     },
-    "timestamp": 1428165153
+    "timestamp": 1428178017
   },
   "Cucumber Features": {
     "coverage": {
     },
-    "timestamp": 1428162580
+    "timestamp": 1428178346
   }
 }
