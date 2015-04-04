@@ -7,21 +7,21 @@
 
     %div#coursescontainer
       / course list
-      %div.formbox.formdisp.noselect
-        %div.dispbuttons
-          %a{:class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => bottom, 'title' => 'edit'}
-            %span.glyphicon.glyphicon-pencil
-          %a{:class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => bottom, 'title' => 'delete'}
-            %span.glyphicon.glyphicon-trash
-
-        = @courses.each do |c|
+      = courses.each do |c|
+        %div.formbox.formdisp.noselect
+          %div.dispbuttons
+            %a{:class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'edit'}
+              %span.glyphicon.glyphicon-pencil
+            %a{:class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'delete'}
+              %span.glyphicon.glyphicon-trash
+          
           %h4= c.name
           %h5= c.description
-          %p = c.get_tag
-      
+          %p= c.get_tag
+        
       / button to add courses to the schedule
       %div#addbutton.formbox
-        = link_to new_schedule_course_path(@schedule) do
+        = link_to new_schedule_course_path(schedule) do
           %button{:type => 'button', :class => 'btn btn-link btn-block'} 
             %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => "true"}
             Add a class

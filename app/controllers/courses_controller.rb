@@ -10,13 +10,14 @@ class CoursesController < ApplicationController
 
     def create
       @course = Course.new(create_update_params)
-      @id = params[:schedule_id]
-
-      # don't forget to set order!!!
+      
+      # set additional fields (don't forget to set order!!)
+      @course.schedule_id = params[:schedule_id]
+      @course.save
 
       if @course.save
         flash[:notice] = "New course #{@course.name} successfully created"
-        redirect_to edit_schedule_path :schedule_id
+        redirect_to edit_schedule_path(params[:schedule_id])
       else
         flash[:warning] = "Course couldn't be created"
         redirect_to edit_schedule_courses_path

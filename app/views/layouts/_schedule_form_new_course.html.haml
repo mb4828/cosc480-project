@@ -2,7 +2,7 @@
 
   %div#coursescontainer
     %div.formbox{:style => 'display: block'}
-      = form_for([schedule, course], :method => "POST") do |f|
+      = form_for([schedule, course], :method => "post") do |f|
 
         %div.row.formgroup
           %div.col-md-4= f.label :name

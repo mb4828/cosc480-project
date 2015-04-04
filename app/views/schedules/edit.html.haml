@@ -2,5 +2,5 @@
 
 %div.row
   = render "layouts/schedule_viz"
-  = render "layouts/schedule_form_list"
+  = render partial: "layouts/schedule_form_list", locals: {courses: @courses, schedule: @schedule}
     

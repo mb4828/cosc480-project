@@ -10,7 +10,7 @@ body {
 #formheader { text-align: right; padding-bottom: 10px; }
 #addbutton { display:block; text-align:center; }
 .dispbuttons { float:right; }
-.checkboxes { display:none; }
+/*.checkboxes { display:none; }*/
 
 #coursescontainer { /* holds the course form and manages overflow */
     height: inherit;
@@ -27,14 +27,12 @@ body {
     margin: 6px 0px;
     border: 1px solid gray;
     border-radius: 8px;
-    display: none;
     background: white;
 }
 
 .formdisp {  /* box that contains the display elements for each course (the pretty version of the form) */
     background: lightblue;
     transition: color 0.5s ease;
-    display: none;
 }
 
 /* schedule visualization */
