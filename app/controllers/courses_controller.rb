@@ -16,7 +16,7 @@ class CoursesController < ApplicationController
 
       if @course.save
         flash[:notice] = "New course #{@course.name} successfully created"
-        redirect_to edit_schedule_path
+        redirect_to edit_schedule_path :schedule_id
       else
         flash[:warning] = "Course couldn't be created"
         redirect_to edit_schedule_courses_path
@@ -31,7 +31,7 @@ class CoursesController < ApplicationController
         @course = Course.find(params[:id])
         if @course.update(create_update_params)
           flash[:notice] = "Update was successful"
-          redirect_to edit_schedule_path
+          redirect_to edit_schedule_path :schedule_id
         else
           flash[:warning] = "There was an error, the course wasn't updated"
           redirect_to edit_schedule_course_path
@@ -43,7 +43,7 @@ class CoursesController < ApplicationController
         Course.find(cid).destroy
         if not Course.exists?(cid)
           flash[:notice] = "Successfully removed"
-          redirect_to edit_schedule_path
+          redirect_to edit_schedule_path :schedule_id
         else
           flash[:warning] = "There was an error, the course wasn't removed"
           redirect_to edit_schedule_path
