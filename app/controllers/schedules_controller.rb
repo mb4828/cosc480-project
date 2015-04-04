@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+    $lock = false
     def index
     end
 
@@ -22,11 +23,20 @@ class SchedulesController < ApplicationController
     end
 
     def update
-        # create the user object corresponding to the params
+        # create the user object corresponding to the params (done)
         # make sure schedule and user object are linked
-        # somehow lock/disable editing - make sure that you can't access the edit view anymore
+        # somehow lock/disable editing - make sure that you can't access the edit view anymore (done)
         # redirect to a "permalink" which for now can just be the default route for the course
           # this will take you to the show view for the course
+        $lock = true
+        #middle stuff...
+        @user = empty_user
+        @user.first_name = params[:first_name]
+        @user.last_name = params[:last_name]
+        #email not currently validated, iteration 2.
+        @user.email = params[:email]
+        @user.save
+        redirect_to schedule_path
     end
 
     def show

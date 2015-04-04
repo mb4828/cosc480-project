@@ -14,7 +14,7 @@ class CoursesController < ApplicationController
         redirect_to edit_schedule_path
       else
         flash[:warning] = "Course couldn't be created"
-        redirect_to edit_schedule_course_path
+        redirect_to edit_schedule_courses_path
       end
     end
 
