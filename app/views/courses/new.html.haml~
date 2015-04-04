@@ -6,4 +6,4 @@
 %h1 Add a new course
 
 %div.row
-  = render partial: "layouts/schedule_form_new_course", locals: {course: @course, schedule: @schedule}
+  = render partial: "layouts/schedule_form_new_course2", locals: {course: @course, schedule: @schedule}
