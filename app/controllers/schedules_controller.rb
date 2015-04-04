@@ -16,9 +16,7 @@ class SchedulesController < ApplicationController
         @schedule = Schedule.save
     end
 
-    # All future attempts to access the main schedule will be routed here
     def edit
-        # pass me a list of courses as an instance variable that I can iterate through
         @schedule = Schedule.find(params[:id])
         @courses = @schedule.courses
     end
@@ -40,6 +38,7 @@ class SchedulesController < ApplicationController
     end
 
     def show
-      # same as edit... pass me a list of courses to render
+        @schedule = Schedule.find(params[:id])
+        @courses = @schedule.courses
     end
 end

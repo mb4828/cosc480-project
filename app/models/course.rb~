@@ -3,13 +3,13 @@ class Course < ActiveRecord::Base
 
   def get_tag
     output = ""
-    output += "S" if self.sunday
-    output += "M" if self.monday
-    output += "T" if self.tuesday
-    output += "W" if self.wednesday
-    output += "R" if self.thursday
-    output += "F" if self.friday
-    output += "S" if self.saturday
+    output += "S" if self.sunday == true
+    output += "M" if self.monday == true
+    output += "T" if self.tuesday == true
+    output += "W" if self.wednesday == true
+    output += "R" if self.thursday == true
+    output += "F" if self.friday == true
+    output += "S" if self.saturday == true
     output += " from " + self.start_time + " to " + self.end_time
   end
 

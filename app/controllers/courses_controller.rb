@@ -3,6 +3,10 @@ class CoursesController < ApplicationController
       redirect_to schedule_path(params[:schedule_id])
     end
 
+    def show
+      redirect_to schedule_path(params[:schedule_id])
+    end
+
     def new
       @schedule = Schedule.find(params[:schedule_id])
       @course = Course.new
@@ -26,13 +30,14 @@ class CoursesController < ApplicationController
 
     def edit
       @course = Course.find(params[:id])
+      @schedule = Schedule.find(params[:schedule_id])
     end
     
     def update
         @course = Course.find(params[:id])
         if @course.update(create_update_params)
           flash[:notice] = "Update was successful"
-          redirect_to edit_schedule_path :schedule_id
+          redirect_to edit_schedule_path(params[:schedule_id])
         else
           flash[:warning] = "There was an error, the course wasn't updated"
           redirect_to edit_schedule_course_path

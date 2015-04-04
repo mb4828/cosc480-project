@@ -1,0 +1,4 @@
+%h1 Edit a course
+
+%div.row
+  = render partial: "layouts/schedule_course_form", locals: {course: @course, schedule: @schedule}
