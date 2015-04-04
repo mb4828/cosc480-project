@@ -2,7 +2,7 @@
 
   %div#coursescontainer
     %div.formbox{:style => 'display: block'}
-      - form_for([schedule, course], :html => {:id => 'courseform'}) do |f|
+      = form_for([schedule, course], :html => {:id => 'courseform'}) do |f|
 
         %div.row.form-group
           %div.col-md-4= f.label :name
@@ -21,12 +21,12 @@
             %div.btn-group.btn-group-justified{:role => "group"}
 
               %div.btn-group{:role => "group"}
-                %button#sun.btn.btn-default.bootstrap-button{"aria-pressed" => "false", :autocomplete => "off", |
-                "data-toggle" => "button", :onclick => "checkToggle(0,'sun')", :type => "button"} S
+                %button#sun.btn.btn-default.bootstrap-button{"data-toggle" => "button", :autocomplete => "off", |
+                 "aria-pressed" => "false", :onclick => "checkToggle(0,'sun')", :type => "button"} S
 
-                %div.checkboxes
-                  = f.label :sunday, "S"
-                  = f.check_box :sunday, :id => 'sun-check'
+              %div.checkboxes
+                = f.label :sunday, "S"
+                = f.check_box :sunday, :id => 'sun-check'
               
               %div.btn-group{:role => "group"}
                 %button#mon.btn.btn-default.bootstrap-button{"aria-pressed" => "false", :autocomplete => "off", |

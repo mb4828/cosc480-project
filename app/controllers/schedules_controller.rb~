@@ -22,7 +22,6 @@ class SchedulesController < ApplicationController
     end
 
     def update
-        byebug
         # create the user object corresponding to the params 
         @user = User.create(:first_name => params[:first_name], :last_name => params[:last_name], :email => params[:email])
 
@@ -43,7 +42,7 @@ class SchedulesController < ApplicationController
         @schedule = Schedule.find(params[:id])
         @courses = @schedule.courses
         @user = @schedule.user
-        flash[:notice] = "Your schedule has been saved. You can access it at the following URL: \ 
+        flash[:notice] = "Your schedule has been saved! You can access it at the following URLs: \ 
           <a href='" + schedule_path + "' class='alert-link'>" + schedule_url + "</a>"
     end
 end
