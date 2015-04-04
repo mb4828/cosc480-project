@@ -5,5 +5,5 @@
   = render partial: "layouts/schedule_form_list", locals: {courses: @courses, schedule: @schedule}
 
 / enable bootstrap tooltips
-  :javascript
-    $('[data-toggle="tooltip"]').tooltip();
+:javascript
+  $('[data-toggle="tooltip"]').tooltip();

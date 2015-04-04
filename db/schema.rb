@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404002328) do
+ActiveRecord::Schema.define(version: 20150325211700) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name",        limit: 30
@@ -27,15 +27,16 @@ ActiveRecord::Schema.define(version: 20150404002328) do
     t.string   "end_time",    limit: 8
     t.string   "color",       limit: 8
     t.integer  "ordering"
+    t.integer  "schedule_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "schedule_id"
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.boolean  "locked",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: :cascade do |t|

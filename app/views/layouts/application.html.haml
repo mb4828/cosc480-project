@@ -25,8 +25,25 @@
           Schedulizer
           %small A scheduling app for students 
 
-      %p= flash[:notice] if flash[:notice]
-      %p= flash[:warning] if flash[:warning]
+      %noscript
+        %div.alert.alert-danger
+          %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"}
+          Please enable javascript in order to access all the features of our site.
+        
+      - if flash[:notice]
+        %div.alert.alert-dismissible.alert-success
+          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+            %span{"aria-hidden" => "true"} &times;
+          %span.glyphicon.glyphicon-ok-sign{"aria-hidden" => "true"}
+          = flash[:notice].html_safe
+
+      = if flash[:warning]
+        %div.alert.alert-dismissible.alert-danger
+          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+            %span{"aria-hidden" => "true"} &times;
+          %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"}
+          = flash[:warning].html_safe
+
       = yield
 
       / more scripts

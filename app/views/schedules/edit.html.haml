@@ -2,7 +2,7 @@
 
 %div.row
   = render "layouts/schedule_viz"
-  = render partial: "layouts/schedule_form_list", locals: {courses: @courses, schedule: @schedule}
+  = render partial: "layouts/schedule_form_edit", locals: {courses: @courses, schedule: @schedule}
 
 / enable bootstrap tooltips
 :javascript

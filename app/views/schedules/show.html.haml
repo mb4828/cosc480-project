@@ -1,0 +1,5 @@
+%h3= "#{@user.first_name} #{@user.last_name}'s schedule"
+
+%div.row
+  = render "layouts/schedule_viz"
+  = render partial: "layouts/schedule_form_show", locals: {courses: @courses, schedule: @schedule}

@@ -22,23 +22,28 @@ class SchedulesController < ApplicationController
     end
 
     def update
+        byebug
         # create the user object corresponding to the params 
+        @user = User.create(:first_name => params[:first_name], :last_name => params[:last_name], :email => params[:email])
+
         # make sure schedule and user object are linked (done via has_many & belongs_to
-        # somehow lock/disable editing - make sure that you can't access the edit view anymore (done)
+        @schedule = Schedule.find(params[:id])
+        @schedule.user_id = @user.id
+
+        # somehow lock/disable editing - make sure that you can't access the edit view anymore
+        # todo: implement this feature so it actually works!!
+        @schedule.locked = true
+        @schedule.save
+
         # redirect to a "permalink" which for now can just be the default route for the course
-          # this will take you to the show view for the course
-        #middle stuff...
-        @user = empty_user
-        @user.first_name = params[:first_name]
-        @user.last_name = params[:last_name]
-        #email not currently validated, iteration 2.
-        @user.email = params[:email]
-        @user.save
         redirect_to schedule_path
     end
 
     def show
         @schedule = Schedule.find(params[:id])
         @courses = @schedule.courses
+        @user = @schedule.user
+        flash[:notice] = "Your schedule has been saved! You can access it at the following URL: \ 
+          <a href='" + schedule_path + "' class='alert-link'>" + schedule_url + "</a>"
     end
 end

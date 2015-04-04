@@ -1,5 +1,5 @@
 %div.col-md-4.formcontainer
-  %form#courseform
+  = form_tag schedule_path(schedule), :method => "put", :id => "courseform" do
 
     %div#formheader
       %button{:type => 'button', :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', |
@@ -7,7 +7,7 @@
 
     %div#coursescontainer
       / course list
-      = courses.each do |c|
+      - courses.each do |c|
         %div.formbox.formdisp.noselect
           %div.dispbuttons
             = link_to edit_schedule_course_path(schedule.id, c.id), :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Edit' do
@@ -49,23 +49,21 @@
             %p Please enter your name and e-mail address to save your schedule.
             %br
             %div.form-group
-              %label{:for => "user-first-name"} First name
-              %input#user-first-name.form-control{:type => "text"}
-                %div.help-block.with-errors
+              = label_tag "first_name"
+              = text_field_tag "first_name", nil, class: "form-control"
             %div.form-group
-              %label{:for => "user-last-name"} Last name
-              %input#user-last-name.form-control{:type => "text"}
-                %div.help-block.with-errors
+              = label_tag "last_name"
+              = text_field_tag "last_name", nil, class: "form-control"
             %div.form-group
-              %label{:for => "user-email"} E-mail address
-              %input#user-email.form-control{:type => "email"}
-                %div.help-block.with-errors
+              = label_tag "email"
+              = email_field_tag "email", nil, class: "form-control"
             %br
           %div.modal-footer
             %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Go back
             %input.btn.btn-primary{:type => "submit", :value => "Save my schedule"}
 
 
+/ create schedule visualization
 :javascript
   $(function(){$('.courseid').each(function(){createSchedule($(this).data('id'))})});
 

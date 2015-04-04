@@ -2,7 +2,7 @@
 
   %div#coursescontainer
     %div.formbox{:style => 'display: block'}
-      = form_for([schedule, course], :html => {:id => 'courseform'}) do |f|
+      - form_for([schedule, course], :html => {:id => 'courseform'}) do |f|
 
         %div.row.form-group
           %div.col-md-4= f.label :name
@@ -102,5 +102,4 @@
   :javascript
     setupForm(0);
     setButtons(0);
-
 
