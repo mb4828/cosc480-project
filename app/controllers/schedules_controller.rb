@@ -11,11 +11,6 @@ class SchedulesController < ApplicationController
 	      @schedule = Schedule.create
     end
 
-    def create
-        # should never be called?
-        @schedule = Schedule.save
-    end
-
     def edit
         @schedule = Schedule.find(params[:id])
         @courses = @schedule.courses

@@ -1,9 +1,4 @@
-require 'uri'
-require 'cgi'
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
-require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
-
-Given /^this|these courses|input:$/i do |table|
+Given /^these courses:$/i do |table|
   table.hashes.each do |fhash|
     if fhash.has_key? "desc"
       fhash["description"] = fhash.delete("desc")
@@ -21,7 +16,7 @@ Given /^this|these courses|input:$/i do |table|
       fhash["wednesday"] = fhash.delete("wed")
     end
     if fhash.has_key? "thu"
-      fhash["thurday"] = fhash.delete("thu")
+      fhash["thursday"] = fhash.delete("thu")
     end
     if fhash.has_key? "fri"
       fhash["friday"] = fhash.delete("fri")
@@ -48,4 +43,8 @@ Given /^this|these courses|input:$/i do |table|
     
     Course.create!(fhash)
   end
+end
+
+Given(/^these schedules:$/i) do |table|
+    Schedule.create!(table.hashes)
 end

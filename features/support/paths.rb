@@ -22,9 +22,21 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
-    when /^the new schedule page$/
-        '/schedules/new'
-    
+    when /^the new schedule page$/i
+        self.send('new_schedule_path'.to_sym)
+
+    when /^the edit schedule page for schedule (.*)$/i
+        self.send('edit_schedule_path'.to_sym, $1)
+
+    when /^the show schedule page for schedule (.*)$/i
+        self.send('schedule_path'.to_sym, $1)
+
+    when /^the new courses page for course (.*)$/i
+        self.send('new_schedule_course_path'.to_sym, $1)
+
+    when /^the edit courses page for schedule (.*) course (.*)$/i
+        self.send('edit_schedule_course_path'.to_sym, $1, $2)
+
     else
       begin
         page_name =~ /^the (.*) page$/

@@ -11,11 +11,13 @@ RSpec::Matchers.define :appear_before do |later_content|
   end
 end
 
-Then(/^I should see "(.*?)" above|before "(.*?)"$/) do |earlier_content, later_content|
-    earlier_content.text.should appear_before(later_content.text)
+Then(/^I should see "(.+)" (above|before) "(.+)"$/) do |earlier_content, descriptor, later_content|
+    earlier_content.should appear_before(later_content)
 end
 
-When(/^I press "(.*?)" for "(.*?)"$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+When(/^I press "(.*?)" for "(.*?)"$/) do |button_name, source_text|
+    within(:xpath, '//h4/text()[contains(.,"' + source_text + '")]/../..') do
+        click_link(button_name)
+    end
 end
 

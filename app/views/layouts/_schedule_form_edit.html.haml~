@@ -33,9 +33,10 @@
         
       / button to add courses to the schedule
       %div#addbutton.formbox
-        = link_to new_schedule_course_path(@schedule), :type => 'button', :class => 'btn btn-link btn-block' do
-          %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => "true"}
-          Add a class
+        = link_to new_schedule_course_path(schedule) do
+          %button{:type => 'button', :class => 'btn btn-link btn-block'} 
+            %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => "true"}
+            Add a class
 
     / modal to collect user information and submit the form
     %div#confirmationModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "confirmationModalLabel", |
