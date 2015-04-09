@@ -45,3 +45,6 @@ Feature: Edit a class
 
         Then I should be on the edit schedule page for schedule 0
         And I should see "6:00am to 6:01am"
+    
+
+

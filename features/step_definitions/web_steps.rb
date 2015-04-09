@@ -252,3 +252,14 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Given(/^this schedule$/) do |table|
+  Schedule.create!(table.hashes)
+end
+
+When(/^the time is (\d+)\-(\d+)\-(\d+) (\d+):(\d+):(\d+) UTC$/) do |arg1, arg2, arg3, arg4, arg5, arg6|
+  #SOMEONE TELL ME WHAT TO DOOOOOOOOOOOOOOOOOOOOO
+end
+
+
+
