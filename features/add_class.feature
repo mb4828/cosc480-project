@@ -7,7 +7,7 @@ Feature: Add a class
         Given I am on the new schedule page
         When I follow "Add a class"
 
-        Then I should be on the new courses page for course 1
+        Then I should be on the new courses page for schedule 1
         When I fill in the following:
             | Name          | Software Engineering      |
             | Description   | COSC 480                  |
@@ -39,7 +39,7 @@ Feature: Add a class
         Then I should see "MWF from 10:20am to 11:10am"
         When I follow "Add a class"
 
-        Then I should be on the new courses page for course 0
+        Then I should be on the new courses page for schedule 0
         When I fill in the following:
             | Name          | Algorithms                |
             | Description   | COSC 302                  |

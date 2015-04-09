@@ -31,7 +31,7 @@ module NavigationHelpers
     when /^the show schedule page for schedule (.*)$/i
         self.send('schedule_path'.to_sym, $1)
 
-    when /^the new courses page for course (.*)$/i
+    when /^the new courses page for schedule (.*)$/i
         self.send('new_schedule_course_path'.to_sym, $1)
 
     when /^the edit courses page for schedule (.*) course (.*)$/i
