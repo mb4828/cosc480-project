@@ -31,3 +31,7 @@
     %div#thu.col-xs-1.day Thu
     %div#fri.col-xs-1.day Fri
     %div#sat.col-xs-1.day Sat
+
+    / create schedule visualization
+    :javascript
+      $(function(){$('.courseid').each(function(){schedulescripts.createSchedule($(this).data('id'))})});

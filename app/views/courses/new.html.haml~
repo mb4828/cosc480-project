@@ -1,4 +1,4 @@
-%h2 Add a new course
+%h3 Add a new course
 
 %div.row
   = render partial: "layouts/course_form", locals: {course: @course, schedule: @schedule}

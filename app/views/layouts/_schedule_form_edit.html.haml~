@@ -1,46 +1,45 @@
 %div.col-md-4.formcontainer
-  = form_tag schedule_path(schedule), :method => "put", :id => "courseform" do
 
-    %div#formheader
-      %button{:type => 'button', :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', |
-      'data-target' => '#confirmationModal', 'data-backdrop' => 'static'} I'm finished!
+  %div#formheader
+    %button{:type => 'button', :class => 'btn btn-primary btn-lg', 'data-toggle' => 'modal', |
+    'data-target' => '#confirmationModal', 'data-backdrop' => 'static'} I'm finished!
 
-    %div#coursescontainer
-      / course list
-      - courses.each do |c|
-        %div.formbox.formdisp.noselect
-          %div.dispbuttons
-            = link_to edit_schedule_course_path(schedule.id, c.id), :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Edit' do
-              %span.glyphicon.glyphicon-pencil
+  %div#coursescontainer
+    / course list
+    - courses.each do |c|
+      %div.formbox.formdisp.noselect
+        %div.dispbuttons
+          = link_to edit_schedule_course_path(schedule.id, c.id), :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Edit' do
+            %span.glyphicon.glyphicon-pencil
 
-            =# %a{:class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'delete'}
-            =#  %span.glyphicon.glyphicon-trash
-          
-          %h4{:id => "course-#{c.id}-name"}= c.name
-          %h5{:id => "course-#{c.id}-desc"}= c.description
-          %p= c.get_tag
-
-          %span{:id => "course-#{c.id}-sun", :style => "display:none"}= c.sunday
-          %span{:id => "course-#{c.id}-mon", :style => "display:none"}= c.monday
-          %span{:id => "course-#{c.id}-tue", :style => "display:none"}= c.tuesday
-          %span{:id => "course-#{c.id}-wed", :style => "display:none"}= c.wednesday
-          %span{:id => "course-#{c.id}-thu", :style => "display:none"}= c.thursday
-          %span{:id => "course-#{c.id}-fri", :style => "display:none"}= c.friday
-          %span{:id => "course-#{c.id}-sat", :style => "display:none"}= c.saturday
-          %span{:id => "course-#{c.id}-start", :style => "display:none"}= c.start_time
-          %span{:id => "course-#{c.id}-end", :style => "display:none"}= c.end_time
-          %span{:class => "courseid", :style => "display:none", :data => {:id => c.id}}
+          = link_to schedule_course_path(schedule.id, c.id), :method => :delete, :onclick => "return confirm('This action cannot be reversed. Are you sure?')", :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Delete' do
+            %span.glyphicon.glyphicon-trash
         
-      / button to add courses to the schedule
-      %div#addbutton.formbox
-        = link_to new_schedule_course_path(schedule) do
-          %button{:type => 'button', :class => 'btn btn-link btn-block'} 
-            %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => "true"}
-            Add a class
+        %h4{:id => "course-#{c.id}-name"}= c.name
+        %h5{:id => "course-#{c.id}-desc"}= c.description
+        %p= c.get_tag
 
-    / modal to collect user information and submit the form
-    %div#confirmationModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "confirmationModalLabel", |
-    :role => "dialog", :tabindex => "-1"}
+        %span{:id => "course-#{c.id}-sun", :style => "display:none"}= c.sunday
+        %span{:id => "course-#{c.id}-mon", :style => "display:none"}= c.monday
+        %span{:id => "course-#{c.id}-tue", :style => "display:none"}= c.tuesday
+        %span{:id => "course-#{c.id}-wed", :style => "display:none"}= c.wednesday
+        %span{:id => "course-#{c.id}-thu", :style => "display:none"}= c.thursday
+        %span{:id => "course-#{c.id}-fri", :style => "display:none"}= c.friday
+        %span{:id => "course-#{c.id}-sat", :style => "display:none"}= c.saturday
+        %span{:id => "course-#{c.id}-start", :style => "display:none"}= c.start_time
+        %span{:id => "course-#{c.id}-end", :style => "display:none"}= c.end_time
+        %span{:class => "courseid", :style => "display:none", :data => {:id => c.id}}
+      
+    / button to add courses to the schedule
+    %div#addbutton.formbox
+      = link_to new_schedule_course_path(@schedule), :type => 'button', :class => 'btn btn-link btn-block' do
+        %span.glyphicon.glyphicon-plus-sign{"aria-hidden" => "true"}
+        Add a class
+
+  / modal to collect user information and submit the form
+  %div#confirmationModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "confirmationModalLabel", |
+  :role => "dialog", :tabindex => "-1"}
+    = form_tag schedule_path(schedule), :method => "put", :id => "courseform" do
       %div.modal-dialog
         %div.modal-content
           %div.modal-header
@@ -60,10 +59,6 @@
             %br
           %div.modal-footer
             %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Go back
-            %input.btn.btn-primary{:type => "submit", :value => "Save my schedule"}
+            %input.btn.btn-primary{:type => "submit", :value => "Save my schedule", :onclick => "return confirm('You will no longer be able to edit this schedule. Are you sure you are ready to continue?')"}
 
-
-/ create schedule visualization
-:javascript
-  $(function(){$('.courseid').each(function(){createSchedule($(this).data('id'))})});
 

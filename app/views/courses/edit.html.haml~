@@ -3,6 +3,4 @@
 %div.row
   = render partial: "layouts/course_form", locals: {course: @course, schedule: @schedule}
 
-/ set the bootstrap buttons on the courseform
-:javascript
-  setButtons(0);
+

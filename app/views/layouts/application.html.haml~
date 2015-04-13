@@ -18,40 +18,39 @@
     = csrf_meta_tags
   %body
        
-
     %div.container
       %div.page-header
         %h1 
-          Schedulizer
-          %small A scheduling app for students 
+          College Schedulizer
 
-      %noscript
-        %div.alert.alert-danger
-          %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"}
-          Please enable javascript in order to access all the features of our site.
-        
-      - if flash[:notice]
-        %div.alert.alert-dismissible.alert-success
-          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
-            %span{"aria-hidden" => "true"} &times;
-          %span.glyphicon.glyphicon-ok-sign{"aria-hidden" => "true"}
-          = flash[:notice]
+      %div.page-content
+        %noscript
+          %div.alert.alert-danger
+            %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"}
+            Please enable javascript in order to access all the features of our site.
+          
+        - if flash[:notice]
+          %div.alert.alert-dismissible.alert-success
+            %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+              %span{"aria-hidden" => "true"} &times;
+            %span.glyphicon.glyphicon-ok-sign{"aria-hidden" => "true"}
+            = flash[:notice].html_safe
 
-      = if flash[:warning]
-        %div.alert.alert-dismissible.alert-danger
-          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
-            %span{"aria-hidden" => "true"} &times;
-          %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"}
-          = flash[:warning]
+        = if flash[:warning]
+          %div.alert.alert-dismissible.alert-danger
+            %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+              %span{"aria-hidden" => "true"} &times;
+            %span.glyphicon.glyphicon-exclamation-sign{"aria-hidden" => "true"}
+            = flash[:warning].html_safe
 
-      = yield
-
-      / more scripts
-      =# %script{:src => "scripts/formscripts.js"}
+        = yield
 
       %div.col-md-12.footer
         &copy; 2015 Laura Slade, Zachary Smith, Matthew Brauner
         %br
         Software Engineering, Colgate University
+
+      / more scripts
+      =# %script{:src => "scripts/formscripts.js"}
 
     

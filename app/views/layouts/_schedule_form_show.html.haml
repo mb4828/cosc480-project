@@ -21,7 +21,3 @@
         %span{:id => "course-#{c.id}-end", :style => "display:none"}= c.end_time
         %span{:class => "courseid", :style => "display:none", :data => {:id => c.id}}
 
-/ create schedule visualization
-:javascript
-  $(function(){$('.courseid').each(function(){createSchedule($(this).data('id'))})});
-

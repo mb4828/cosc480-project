@@ -23,5 +23,5 @@
 
 / create schedule visualization
 :javascript
-  $(function(){$('.courseid').each(function(){createSchedule($(this).data('id'))})});
+  $(function(){$('.courseid').each(function(){schedulescripts.createSchedule($(this).data('id'))})});
 
