@@ -4,18 +4,25 @@ body {
     font-family: "Nunito", sans-serif;
     background: url("biggrid.png") #eeeeee; 
 }
+
 .container {
-    background-color: #D0E5C0; 
+    background-color: #D0E5C0;
+    border-left: 1px solid lightgray; 
+    border-right: 1px solid lightgray;
 }   
 
 .page-header {
-  margin: 40px 0px 10px 0px;
+  height: 75px;
+  line-height: 75px;
+  margin: 30px 0px 20px 0px;
+  padding: 10px 0px;
   border: 0;
 }
 
 .page-content {
   background: white;
   padding: 10px;
+  border: 1px solid lightgray;
   border-radius: 5px;
 }
 
@@ -29,10 +36,14 @@ body {
 }
 
 h1 {
+  display: inline;
+  margin-left: 10px;
+  vertical-align: middle;
   font-family: "Cutive", serif;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 34px;
   color: slateblue;
+  text-shadow: 2px 2px 4px #bbbbbb;
 }
 
 h3 {
@@ -43,6 +54,10 @@ h4 {
   font-weight: bold;
 }
 
+.sitelogo {
+  height: 55px;
+  vertical-align: top;
+}
 
 /* course input form */
 
@@ -59,6 +74,7 @@ h4 {
     background: #efefef;
     padding: 2px 5px;
     border-radius: 5px;
+    font-family: "Arial", sans-serif;
 }
 
 #coursescontainer label { font-weight: normal; }
@@ -96,6 +112,7 @@ h4 {
     user-select: none;
     transition: color 0.5s ease;
     color: black;
+    font-family: "Arial", sans-serif;
 }
 
 .schedule > div {    /* didn't realize that this actually sets up A LOT of formatting... scope is too large but it's too late to change it now */
@@ -128,9 +145,12 @@ h4 {
         *width: 12.5%;
     }
 
-    h1 { text-align: center; }
+    .container { border: 0; }
+    .page-header { text-align: center; height: 95px; margin: 0; }
+    .sitelogo { height: 75px; }
     /*.day { border-left: 1px solid gray; }*/
     .btn-lg { width: 100%; }
+    .footer { font-size: 12px; }
 }
 @media (min-width: 768px) and (max-width: 992px){
     .eightcolumns .col-xs-1, .eightcolumns .col-sm-1, .eightcolumns .col-md-1  {
@@ -138,7 +158,8 @@ h4 {
         *width: 12.5%;
     }
 
-    h1 { text-align: center; font-size: 40px; }
+    h1 { font-size: 40px; }
+    .page-header { text-align: center; }
     .grid table { width: 625px; margin-left: 92px; }
     .btn-lg { width: 100%; }
 }

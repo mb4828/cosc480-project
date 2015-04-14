@@ -20,8 +20,8 @@
        
     %div.container
       %div.page-header
-        %h1 
-          College Schedulizer
+        = image_tag("biglogo.png", class: "sitelogo")
+        %h1.hidden-xs College Schedulizer
 
       %div.page-content
         %noscript
@@ -49,8 +49,5 @@
         &copy; 2015 Laura Slade, Zachary Smith, Matthew Brauner
         %br
         Software Engineering, Colgate University
-
-      / more scripts
-      =# %script{:src => "scripts/formscripts.js"}
 
     
