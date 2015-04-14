@@ -1,21 +1,23 @@
 %div.col-md-12.formcontainer
 
   %div#bigcoursescontainer.col-md-12
-    %div.col-md-6.col-md-offset-3{:style => 'padding: 0'}
+    %div.col-md-6.col-md-offset-3{:style => 'padding: 5px'}
       %div.bigformbox{:style => 'display: block'}
         = form_for([schedule, course], :html => {:id => 'courseform'}) do |f|
 
           %div.row.form-group
             %div.col-md-4= f.label :name
             %div.col-md-8
-              = f.text_field :name, placeholder: 'e.g. Software Engineering', :class => 'form-control'
+              = f.text_field :name, placeholder: 'e.g. Software Engineering', :class => 'form-control', :id => 'name-field'      
               %div.help-block.with-errors
+                = show_errors(course, :name)
 
           %div.row.form-group
             %div.col-md-4= f.label :description
             %div.col-md-8
-              = f.text_field :description, placeholder: 'e.g. COSC 480', :class => 'form-control'
+              = f.text_field :description, placeholder: 'e.g. COSC 480', :class => 'form-control', :id => 'desc-field'
               %div.help-block.with-errors
+                = show_errors(course, :description)
 
           %div.row.form-group
             %div.col-md-12
@@ -77,18 +79,20 @@
                     = f.label :saturday, "S"
                     = f.check_box :saturday, :id => 'sat-check'
 
+              %div.help-block.with-errors
+
           %div.row
             %div.col-md-6.form-group
               = f.label :start_time
-              = f.text_field :start_time, :placeholder => 'e.g. 10:20am', :class => 'form-control'
+              = f.text_field :start_time, :placeholder => 'e.g. 10:20am', :class => 'form-control', :id => 'start-field'
+              %div.help-block.with-errors
+                = show_errors(course, :start_time)
+
             %div.col-md-6.form-group
               = f.label :end_time
-              = f.text_field :end_time, :placeholder => 'e.g. 11:10am', :class => 'form-control'
-
-          / temporary - will be replaced by validation
-          %div.row
-            %div.col-md-12 
-              %p{:style => "text-align:center"} Format time like "1:02pm"
+              = f.text_field :end_time, :placeholder => 'e.g. 11:10am', :class => 'form-control', :id => 'end-field'
+              %div.help-block.with-errors
+                = show_errors(course, :end_time)
 
           %div.row{:style => 'text-align:center'}
             = link_to edit_schedule_path(params[:schedule_id]), :type => 'button', :class => 'btn btn-danger btn-sm', :onclick => "return confirm('All changes will be lost. Are you sure?')" do
@@ -101,6 +105,5 @@
 
     / set the bootstrap buttons on the courseform
     :javascript
-      formscripts.setupForm(0);
-      formscripts.setButtons(0);
+      formscripts.init();
 

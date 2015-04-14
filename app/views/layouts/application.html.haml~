@@ -19,7 +19,7 @@
   %body
        
     %div.container
-      %div.page-header
+      %div.page-header.noselect
         = image_tag("biglogo.png", class: "sitelogo")
         %h1.hidden-xs College Schedulizer
 
@@ -36,7 +36,7 @@
             %span.glyphicon.glyphicon-ok-sign{"aria-hidden" => "true"}
             = flash[:notice].html_safe
 
-        = if flash[:warning]
+        - if flash[:warning]
           %div.alert.alert-dismissible.alert-danger
             %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
               %span{"aria-hidden" => "true"} &times;

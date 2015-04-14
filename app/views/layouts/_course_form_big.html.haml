@@ -8,14 +8,16 @@
           %div.row.form-group
             %div.col-md-4= f.label :name
             %div.col-md-8
-              = f.text_field :name, placeholder: 'e.g. Software Engineering', :class => 'form-control'
+              = f.text_field :name, placeholder: 'e.g. Software Engineering', :class => 'form-control', :id => 'name-field'      
               %div.help-block.with-errors
+                = show_errors(course, :name)
 
           %div.row.form-group
             %div.col-md-4= f.label :description
             %div.col-md-8
-              = f.text_field :description, placeholder: 'e.g. COSC 480', :class => 'form-control'
+              = f.text_field :description, placeholder: 'e.g. COSC 480', :class => 'form-control', :id => 'desc-field'
               %div.help-block.with-errors
+                = show_errors(course, :description)
 
           %div.row.form-group
             %div.col-md-12
@@ -23,7 +25,7 @@
 
                 %div.btn-group{:role => "group"}
                   %button#sun.btn.btn-default.bootstrap-button{"data-toggle" => "button", :autocomplete => "off", |
-                  "aria-pressed" => "false", :onclick => "formscripts.checkToggle(0,'sun')", :type => "button"} S
+                  "aria-pressed" => "false", :onclick => "formscripts.checkToggle('sun')", :type => "button"} S
 
                   %div.checkboxes
                     = f.label :sunday, "S"
@@ -31,7 +33,7 @@
                 
                 %div.btn-group{:role => "group"}
                   %button#mon.btn.btn-default.bootstrap-button{"aria-pressed" => "false", :autocomplete => "off", |
-                  "data-toggle" => "button", :onclick => "formscripts.checkToggle(0,'mon')", :type => "button"} M
+                  "data-toggle" => "button", :onclick => "formscripts.checkToggle('mon')", :type => "button"} M
 
                   %div.checkboxes
                     = f.label :monday, "M"
@@ -39,7 +41,7 @@
 
                 %div.btn-group{:role => "group"}
                   %button#tue.btn.btn-default.bootstrap-button{"aria-pressed" => "false", :autocomplete => "off", |
-                  "data-toggle" => "button", :onclick => "formscripts.checkToggle(0,'tue')", :type => "button"} T
+                  "data-toggle" => "button", :onclick => "formscripts.checkToggle('tue')", :type => "button"} T
 
                   %div.checkboxes
                     = f.label :tuesday, "T"
@@ -47,7 +49,7 @@
 
                 %div.btn-group{:role => "group"}
                   %button#wed.btn.btn-default.bootstrap-button{"aria-pressed" => "false", :autocomplete => "off", |
-                  "data-toggle" => "button", :onclick => "formscripts.checkToggle(0,'wed')", :type => "button"} W
+                  "data-toggle" => "button", :onclick => "formscripts.checkToggle('wed')", :type => "button"} W
 
                   %div.checkboxes
                     = f.label :wednesday, "W"
@@ -55,7 +57,7 @@
 
                 %div.btn-group{:role => "group"}
                   %button#thu.btn.btn-default.bootstrap-button{"aria-pressed" => "false", :autocomplete => "off", |
-                  "data-toggle" => "button", :onclick => "formscripts.checkToggle(0,'thu')", :type => "button"} R
+                  "data-toggle" => "button", :onclick => "formscripts.checkToggle('thu')", :type => "button"} R
 
                   %div.checkboxes
                     = f.label :thursday, "R"
@@ -63,7 +65,7 @@
 
                 %div.btn-group{:role => "group"}
                   %button#fri.btn.btn-default.bootstrap-button{"aria-pressed" => "false", :autocomplete => "off", |
-                  "data-toggle" => "button", :onclick => "formscripts.checkToggle(0,'fri')", :type => "button"} F
+                  "data-toggle" => "button", :onclick => "formscripts.checkToggle('fri')", :type => "button"} F
 
                   %div.checkboxes
                     = f.label :friday, "F"
@@ -71,24 +73,26 @@
 
                 %div.btn-group{:role => "group"}
                   %button#sat.btn.btn-default.bootstrap-button{"aria-pressed" => "false", :autocomplete => "off", |
-                  "data-toggle" => "button", :onclick => "formscripts.checkToggle(0,'sat')", :type => "button"} S
+                  "data-toggle" => "button", :onclick => "formscripts.checkToggle('sat')", :type => "button"} S
 
                   %div.checkboxes
                     = f.label :saturday, "S"
                     = f.check_box :saturday, :id => 'sat-check'
 
+              %div.help-block.with-errors
+
           %div.row
             %div.col-md-6.form-group
               = f.label :start_time
-              = f.text_field :start_time, :placeholder => 'e.g. 10:20am', :class => 'form-control'
+              = f.text_field :start_time, :placeholder => 'e.g. 10:20am', :class => 'form-control', :id => 'start-field'
+              %div.help-block.with-errors
+                = show_errors(course, :start_time)
+
             %div.col-md-6.form-group
               = f.label :end_time
-              = f.text_field :end_time, :placeholder => 'e.g. 11:10am', :class => 'form-control'
-
-          / temporary - will be replaced by validation
-          %div.row
-            %div.col-md-12 
-              %p{:style => "text-align:center"} Format time like "1:02pm"
+              = f.text_field :end_time, :placeholder => 'e.g. 11:10am', :class => 'form-control', :id => 'end-field'
+              %div.help-block.with-errors
+                = show_errors(course, :end_time)
 
           %div.row{:style => 'text-align:center'}
             = link_to edit_schedule_path(params[:schedule_id]), :type => 'button', :class => 'btn btn-danger btn-sm', :onclick => "return confirm('All changes will be lost. Are you sure?')" do
@@ -101,6 +105,5 @@
 
     / set the bootstrap buttons on the courseform
     :javascript
-      formscripts.setupForm(0);
-      formscripts.setButtons(0);
+      formscripts.init();
 

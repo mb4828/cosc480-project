@@ -36,7 +36,7 @@
             %span.glyphicon.glyphicon-ok-sign{"aria-hidden" => "true"}
             = flash[:notice].html_safe
 
-        = if flash[:warning]
+        - if flash[:warning]
           %div.alert.alert-dismissible.alert-danger
             %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
               %span{"aria-hidden" => "true"} &times;

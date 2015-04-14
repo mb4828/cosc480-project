@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require validator.min
 //= require formscripts
 //= require schedulescripts
 //= require turbolinks

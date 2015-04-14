@@ -13,8 +13,8 @@ class CoursesController < ApplicationController
     end
 
     def create
+      @schedule = Schedule.find(params[:schedule_id])
       @course = Course.new(create_update_params)
-      
       # set additional fields (don't forget to set order!!)
       @course.schedule_id = params[:schedule_id]
       @course.save
@@ -23,8 +23,8 @@ class CoursesController < ApplicationController
         flash[:notice] = "New course #{@course.name} successfully created"
         redirect_to edit_schedule_path(params[:schedule_id])
       else
-        flash[:warning] = "Please correct the following errors."
-        redirect_to new_schedule_course_path params[:schedule_id]
+        flash[:warning] = "Please correct the following errors"
+        render "new"    # new_schedule_course_path params[:schedule_id]
       end
     end
 
@@ -34,13 +34,15 @@ class CoursesController < ApplicationController
     end
     
     def update
+        @schedule = Schedule.find(params[:schedule_id])
         @course = Course.find(params[:id])
+
         if @course.update(create_update_params)
-          flash[:notice] = "Update was successful"
+          flash[:notice] = "#{@course.name} successfully updated"
           redirect_to edit_schedule_path(params[:schedule_id])
         else
-          flash[:warning] = "There was an error, the course wasn't updated"
-          redirect_to edit_schedule_course_path(params[:schedule_id], params[:id])
+          flash[:warning] = "Please correct the following errors"
+          render "edit"   # edit_schedule_course_path(params[:schedule_id], params[:id])
         end
     end
 
