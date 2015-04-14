@@ -23,8 +23,8 @@ class CoursesController < ApplicationController
         flash[:notice] = "New course #{@course.name} successfully created"
         redirect_to edit_schedule_path(params[:schedule_id])
       else
-        flash[:warning] = "Course couldn't be created"
-        redirect_to edit_schedule_courses_path
+        flash[:warning] = "Please correct the following errors."
+        redirect_to new_schedule_course_path params[:schedule_id]
       end
     end
 
@@ -40,19 +40,20 @@ class CoursesController < ApplicationController
           redirect_to edit_schedule_path(params[:schedule_id])
         else
           flash[:warning] = "There was an error, the course wasn't updated"
-          redirect_to edit_schedule_course_path
+          redirect_to edit_schedule_course_path(params[:schedule_id], params[:id])
         end
     end
 
     def destroy
         cid = params[:id]
-        Course.find(cid).destroy
+        c = Course.find(cid)
+        c.destroy
         if not Course.exists?(cid)
-          flash[:notice] = "Successfully removed"
-          redirect_to edit_schedule_path :schedule_id
+          flash[:notice] = "#{c.name} successfully removed"
+          redirect_to edit_schedule_path params[:schedule_id]
         else
           flash[:warning] = "There was an error, the course wasn't removed"
-          redirect_to edit_schedule_path
+          redirect_to edit_schedule_path params[:schedule_id]
         end
     end
 
