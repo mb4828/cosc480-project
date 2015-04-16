@@ -48,3 +48,7 @@ end
 Given(/^these schedules:$/i) do |table|
     Schedule.create!(table.hashes)
 end
+
+Given(/^these users:$/i) do |table|
+    User.create!(table.hashes)
+end

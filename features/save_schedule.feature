@@ -18,9 +18,9 @@ Feature: Save the schedule
         
         Then I should be on the edit schedule page for schedule 0
         When I fill in the following:
-            | First name      | James       |
-            | Last name       | Bond        |
-            | Email           | 007@mi6.com |
+            | first_name      | James       |
+            | last_name       | Bond        |
+            | email           | 007@mi6.com |
         And I press "Save my schedule"
         
         Then I should be on the show schedule page for schedule 0
