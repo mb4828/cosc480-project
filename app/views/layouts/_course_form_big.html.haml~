@@ -80,6 +80,7 @@
                     = f.check_box :saturday, :id => 'sat-check'
 
               %div#checkbox-errors
+                = show_errors(course, :saturday)
 
           %div.row
             %div.col-md-6.form-group

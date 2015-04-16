@@ -8,6 +8,12 @@ module ApplicationHelper
         errormsg.html_safe
       end
     end
-  end 
+  end
+
+  def show_errors_params(params, field_name)
+      return if not params.has_key?(field_name)
+      if params[field_name].errors.any?
+      end
+  end
 
 end
