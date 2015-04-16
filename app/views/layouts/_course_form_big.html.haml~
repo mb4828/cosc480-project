@@ -103,7 +103,7 @@
               %span.glyphicon.glyphicon-plus{"aria-hidden" => "true"}
               Add to schedule
 
-    / set the bootstrap buttons on the courseform
+    / activate the javascript elements on the form
     :javascript
       formscripts.init();
 
