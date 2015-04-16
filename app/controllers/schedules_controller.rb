@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+    include SchedulesHelper
+
     def index
     end
 
@@ -8,9 +10,9 @@ class SchedulesController < ApplicationController
     # Future links back (such as from the new courses page) will go back to
     # the update route.
     def new
-	      @schedule = Schedule.create
-
-        # zombie cleanup goes HERE
+	@schedule = Schedule.create
+        render "new"
+        cleanup_zombies
     end
 
     def edit
