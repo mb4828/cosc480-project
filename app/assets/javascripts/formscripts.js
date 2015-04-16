@@ -72,11 +72,11 @@ var formscripts = (function(){
         $('#end-field').attr('pattern', time_regex).attr('maxlength', time_max).attr('required', true).attr('data-error', time_error);
 
         // add custom validation to checkboxes and submit button (at least one day must be checked)
-        $('.bootstrap-button').click(function(){checkedAtLeastOne(check_error)});
-        $('button[type="submit"]').click(function(){return checkedAtLeastOne(check_error)});
+        //$('.bootstrap-button').click(function(){checkedAtLeastOne(check_error)});
+        //$('button[type="submit"]').click(function(){return checkedAtLeastOne(check_error)});
 
         // activate validations in html mode
-        $('#courseform').attr('data-html', true).validator();
+        //$('#courseform').attr('data-html', true).validator();
     },
 
     /* special method to set up validations for the edit schedule page */
@@ -98,7 +98,7 @@ var formscripts = (function(){
         $('#user-email').attr('required', true).attr('data-error', email_error);
 
         // activate validations in html mode
-        $('#scheduleform').attr('data-html', true).validator();
+        //$('#scheduleform').attr('data-html', true).validator();
     },
 
   }
