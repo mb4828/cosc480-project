@@ -9,6 +9,8 @@ class SchedulesController < ApplicationController
     # the update route.
     def new
 	      @schedule = Schedule.create
+
+        # zombie cleanup goes HERE
     end
 
     def edit
@@ -23,25 +25,30 @@ class SchedulesController < ApplicationController
     def update
         # create the user object corresponding to the params 
         @user = User.create(:first_name => params[:first_name], :last_name => params[:last_name], :email => params[:email])
+        
         # make sure schedule and user object are linked (done via has_many & belongs_to
         @schedule = Schedule.find(params[:id])
         @schedule.user_id = @user.id
 
-        #somehow lock/disable editing
+        #lock/disable editing
         @schedule.locked = true
         @schedule.save
 
         # redirect to a "permalink" which for now can just be the default route for the course
         redirect_to schedule_path
-        # todo potentially add zombie cleanup here?
-        
     end
 
     def show
+
         @schedule = Schedule.find(params[:id])
         @courses = @schedule.courses
         @user = @schedule.user
-        flash[:notice] = "Your schedule has been saved! You can access it at the following URL: \ 
-          <a href='" + schedule_path + "' class='alert-link'>" + schedule_url + "</a>"
+
+        if @schedule.locked == false
+            redirect_to edit_schedule_path
+        else
+            flash[:notice] = "Your schedule has been saved! You can access it at the following URL: \ 
+            <a href='" + schedule_path + "' class='alert-link'>" + schedule_url + "</a>"
+        end
     end
 end
