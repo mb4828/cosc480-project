@@ -1,14 +1,32 @@
 var formscripts = (function(){
   
+  var checkedAtLeastOne = function(error_msg){
+      // check all checkboxes, stop if a checked box is found and clear error message
+      var valid = false;      
+      $('input[type="checkbox"]').each(function(){
+          if ($(this).is(":checked")) {
+              $('#checkbox-errors').html('');
+              valid = true;
+              return;
+          }
+      });
+
+      // no checked boxes found, block submit and display an error message
+      if (!valid) {
+          $('#checkbox-errors').html(error_msg);
+          return false;
+      }
+      return true;
+  };
+
   return {
 
     init: function(){
-        /* for graceful degredation, javascript powered buttons will only be displayed if user has javascript 
-         enabled in their browser */
-        //$('.checkboxes').hide();
+        // for graceful degredation, javascript powered buttons will only be displayed if user has javascript enabled
+        $('.checkboxes').hide();
         $('.bootstrap-button').show();
         this.setButtons();
-        this.setValidation();
+        this.setCourseFormValidation();
     },
 
     /* toggles the actual checkboxes on and off for the days of the week buttons
@@ -30,8 +48,8 @@ var formscripts = (function(){
 
     },
 
-    /* sets up validation parameters for the form */
-    setValidation: function() {
+    /* sets up validation parameters for the edit course page */
+    setCourseFormValidation: function() {
         // regular expressions
         var string_regex = '^.{1,30}$';
         var time_regex = '^([1-9]|1[0-2]):([0-5][0-9])[ap]m$';
@@ -45,30 +63,42 @@ var formscripts = (function(){
         var name_error = asterisk + 'This field is required';
         var desc_error = asterisk + 'This field is required';
         var check_error = asterisk + 'Select at least one day';
-        var string_error = asterisk + 'This field is required';
         var time_error = asterisk + 'Format time like "1:23pm"';
 
-        // apply to form fields
+        // set up form fields
         $('#name-field').attr('pattern', string_regex).attr('maxlength', string_max).attr('required', true).attr('data-error', name_error);
         $('#desc-field').attr('pattern', string_regex).attr('maxlength', string_max).attr('required', true).attr('data-error', desc_error);
         $('#start-field').attr('pattern', time_regex).attr('maxlength', time_max).attr('required', true).attr('data-error', time_error);
         $('#end-field').attr('pattern', time_regex).attr('maxlength', time_max).attr('required', true).attr('data-error', time_error);
-        // $('input[id=user-first-name]').attr('pattern', string_regex).attr('maxlength', string_max).attr('required', true).attr('data-error', string_error);
-        // $('input[id=user-last-name]').attr('pattern', string_regex).attr('maxlength', string_max).attr('required', true).attr('data-error', string_error);
-        // $('input[id=user-email]').attr('required', true).attr('data-error', string_error);
 
-        // set up checkbox rule (at least one day must be checked)
-        $('#sat-check').attr('data-check', {check: function(e){ 
-            $('input[type="checkbox"]').each(function() {
-                if ($(this).is(":checked")) { return true; }
-            });
-            return false;
-        }});
-        
-        $('#sat-check').attr('data-errors', {check: check_error});
+        // add custom validation to checkboxes and submit button (at least one day must be checked)
+        $('.bootstrap-button').click(function(){checkedAtLeastOne(check_error)});
+        $('button[type="submit"]').click(function(){return checkedAtLeastOne(check_error)});
 
-        // apply to form
+        // activate validations in html mode
         $('#courseform').attr('data-html', true).validator();
+    },
+
+    /* special method to set up validations for the edit schedule page */
+    setScheduleFormValidation: function() {
+        // regular expressions
+        var string_regex = '^.{1,30}$';
+
+        // max characters
+        var string_max = 30;
+
+        // error messages
+        var asterisk = "<span class='glyphicon glyphicon-asterisk' aria-hidden='true'></span> ";
+        var name_error = asterisk + 'This field is required';
+        var email_error = asterisk + 'Please enter a valid e-mail address';
+
+        // set up form fields
+        $('#user-first-name').attr('pattern', string_regex).attr('maxlength', string_max).attr('required', true).attr('data-error', name_error);
+        $('#user-last-name').attr('pattern', string_regex).attr('maxlength', string_max).attr('required', true).attr('data-error', name_error);
+        $('#user-email').attr('required', true).attr('data-error', email_error);
+
+        // activate validations in html mode
+        $('#scheduleform').attr('data-html', true).validator();
     },
 
   }

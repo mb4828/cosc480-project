@@ -93,9 +93,8 @@ h4 {
     transition: color 0.5s ease;
 }
 
-.with-errors {
+.with-errors, #checkbox-errors {
     color: firebrick;
-    font-weight: bold;
 }
 
 /* schedule visualization */

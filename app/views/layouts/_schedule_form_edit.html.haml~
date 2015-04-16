@@ -39,7 +39,7 @@
   / modal to collect user information and submit the form
   %div#confirmationModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "confirmationModalLabel", |
   :role => "dialog", :tabindex => "-1"}
-    = form_tag schedule_path(schedule), :method => "put", :id => "courseform" do
+    = form_tag schedule_path(schedule), :method => "put", :id => "scheduleform" do
       %div.modal-dialog
         %div.modal-content
           %div.modal-header
@@ -49,16 +49,23 @@
             %br
             %div.form-group
               = label_tag "first_name"
-              = text_field_tag "first_name", nil, class: "form-control"
+              = text_field_tag "first_name", nil, class: "form-control", id: "user-first-name"
+              %div.help-block.with-errors
             %div.form-group
               = label_tag "last_name"
-              = text_field_tag "last_name", nil, class: "form-control"
+              = text_field_tag "last_name", nil, class: "form-control", id: "user-last-name"
+              %div.help-block.with-errors
             %div.form-group
               = label_tag "email"
-              = email_field_tag "email", nil, class: "form-control"
+              = email_field_tag "email", nil, class: "form-control", id: "user-email"
+              %div.help-block.with-errors
             %br
           %div.modal-footer
             %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Go back
-            %input.btn.btn-primary{:type => "submit", :value => "Save my schedule", :onclick => "return confirm('You will no longer be able to edit this schedule. Are you sure you are ready to continue?')"}
+            %input.btn.btn-primary{:type => "submit", :value => "Save my schedule", :onclick => "return confirm('You will no longer be able to edit this schedule. Are you sure?')"}
+
+    / activate the javascript elements on the form
+    :javascript
+      formscripts.setScheduleFormValidation();
 
 
