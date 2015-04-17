@@ -18,6 +18,9 @@
     = csrf_meta_tags
   %body
        
+    / addthis
+    %script{:async => "async", :src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-552304d5563823ba", :type => "text/javascript"}
+
     %div.container
       %div.page-header.noselect
         = image_tag("biglogo.png", class: "sitelogo")
@@ -49,5 +52,9 @@
         &copy; 2015 Laura Slade, Zachary Smith, Matthew Brauner
         %br
         Software Engineering, Colgate University
+
+      
+
+
 
     

@@ -94,6 +94,7 @@ h4 {
 }
 
 .with-errors, #checkbox-errors {
+    margin: 5px 0px 10px 0px;
     color: firebrick;
 }
 
@@ -152,6 +153,7 @@ h4 {
     .container { border: 0; }
     .page-header { text-align: center; height: 95px; margin: 0; }
     .sitelogo { height: 75px; }
+    .addthis_sharing_toolbox { text-align: center; }
     /*.day { border-left: 1px solid gray; }*/
     .btn-lg { width: 100%; }
     .footer { font-size: 12px; }

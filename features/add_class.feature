@@ -13,9 +13,9 @@ Feature: Add a class
             | Description   | COSC 480                  |
             | Start         | 10:20am                   |
             | End           | 11:10am                   |
-	      And I check "mon-check"
-	      And I check "wed-check"
-	      And I check "fri-check"
+	And I check "mon-check"
+	And I check "wed-check"
+	And I check "fri-check"
         And I press "Add to schedule"
 
         Then I should be on the edit schedule page for schedule 1

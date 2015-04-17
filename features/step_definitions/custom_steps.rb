@@ -21,3 +21,7 @@ When(/^I press "(.*?)" for "(.*?)"$/) do |button_name, source_text|
     end
 end
 
+Then(/^I shouldn't be able to access the edit schedule page for schedule (\d+)$/) do |sid|
+  pending # express the regexp above with the code you wish you had
+end
+
