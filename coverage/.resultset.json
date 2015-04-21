@@ -293,7 +293,7 @@
   },
   "Cucumber Features": {
     "coverage": {
-      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/controllers/schedules_controller.rb": [
+      "/home/csvm/Desktop/Proj/cosc480-project/app/controllers/schedules_controller.rb": [
         1,
         1,
         null,
@@ -351,14 +351,14 @@
         null,
         null
       ],
-      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/controllers/application_controller.rb": [
+      "/home/csvm/Desktop/Proj/cosc480-project/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/helpers/application_helper.rb": [
+      "/home/csvm/Desktop/Proj/cosc480-project/app/helpers/application_helper.rb": [
         1,
         null,
         1,
@@ -379,7 +379,7 @@
         null,
         null
       ],
-      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/helpers/schedules_helper.rb": [
+      "/home/csvm/Desktop/Proj/cosc480-project/app/helpers/schedules_helper.rb": [
         1,
         null,
         1,
@@ -391,7 +391,7 @@
         null,
         null
       ],
-      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/models/schedule.rb": [
+      "/home/csvm/Desktop/Proj/cosc480-project/app/models/schedule.rb": [
         1,
         1,
         1,
@@ -410,7 +410,7 @@
         null,
         null
       ],
-      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/controllers/courses_controller.rb": [
+      "/home/csvm/Desktop/Proj/cosc480-project/app/controllers/courses_controller.rb": [
         1,
         1,
         0,
@@ -479,7 +479,7 @@
         null,
         null
       ],
-      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/models/course.rb": [
+      "/home/csvm/Desktop/Proj/cosc480-project/app/models/course.rb": [
         1,
         1,
         1,
@@ -581,7 +581,7 @@
         null,
         null
       ],
-      "/home/csvm/Documents/cosc480-schedulizer/schedulizer/app/models/user.rb": [
+      "/home/csvm/Desktop/Proj/cosc480-project/app/models/user.rb": [
         1,
         1,
         1,
@@ -589,6 +589,6 @@
         null
       ]
     },
-    "timestamp": 1429643533
+    "timestamp": 1429643835
   }
 }
