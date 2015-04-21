@@ -17,7 +17,7 @@ Feature: Edit a class
         When I press "Edit" for "Software Engineering"
 
         Then I should be on the edit courses page for schedule 0 course 0
-        And I fill in "Name" with "Software Un-engineering"
+        And I fill in "name-field" with "Software Un-engineering"
         And I press "Add to schedule"
 
         Then I should be on the edit schedule page for schedule 0
@@ -28,7 +28,7 @@ Feature: Edit a class
         When I press "Edit" for "Software Engineering"
 
         Then I should be on the edit courses page for schedule 0 course 0
-        And I fill in "Description" with "COSC 1000"
+        And I fill in "desc-field" with "COSC 1000"
         And I press "Add to schedule"
 
         Then I should be on the edit schedule page for schedule 0
@@ -39,8 +39,8 @@ Feature: Edit a class
         When I press "Edit" for "Software Engineering"
 
         Then I should be on the edit courses page for schedule 0 course 0
-        And I fill in "Start" with "6:00am"
-        And I fill in "End" with "6:01am"
+        And I fill in "start-field" with "6:00am"
+        And I fill in "end-field" with "6:01am"
         And I press "Add to schedule"
 
         Then I should be on the edit schedule page for schedule 0

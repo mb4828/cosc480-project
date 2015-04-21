@@ -9,10 +9,10 @@ Feature: Add a class
 
         Then I should be on the new courses page for schedule 1
         When I fill in the following:
-            | Name          | Software Engineering      |
-            | Description   | COSC 480                  |
-            | Start         | 10:20am                   |
-            | End           | 11:10am                   |
+            | name-field    | Software Engineering      |
+            | desc-field    | COSC 480                  |
+            | start-field   | 10:20am                   |
+            | end-field     | 11:10am                   |
 	And I check "mon-check"
 	And I check "wed-check"
 	And I check "fri-check"
@@ -41,10 +41,10 @@ Feature: Add a class
 
         Then I should be on the new courses page for schedule 0
         When I fill in the following:
-            | Name          | Algorithms                |
-            | Description   | COSC 302                  |
-            | Start         | 11:20am                   |
-            | End           | 12:10pm                   |
+            | name-field    | Algorithms                |
+            | desc-field    | COSC 302                  |
+            | start-field   | 11:20am                   |
+            | end-field     | 12:10pm                   |
 	And I check "mon-check"
 	And I check "wed-check"
 	And I check "fri-check"

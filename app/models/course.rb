@@ -1,6 +1,7 @@
 class Course < ActiveRecord::Base
   belongs_to :schedule
-  validates :name, :description, presence: { message: "This field is required" }
+  validates :name, presence: { message: "Course name required" }
+  validates :description, presence: { message: "Course description required" }
   validates :start_time, :end_time, format: { multiline: true, with: /^(?<hour>[1-9]|1[0-2]):(?<minute>[0-5][0-9])(?<m>[ap]m)$/, message: "Format time like 1:02pm"}
   validate :start_in_range, :end_in_range, :start_before_end, :at_least_one_day
 

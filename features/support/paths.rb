@@ -31,11 +31,17 @@ module NavigationHelpers
     when /^the show schedule page for schedule (.*)$/i
         self.send('schedule_path'.to_sym, $1)
 
+    when /^the course index page for schedule (.*)$/i
+        self.send('schedule_courses_path'.to_sym, $1)
+
     when /^the new courses page for schedule (.*)$/i
         self.send('new_schedule_course_path'.to_sym, $1)
 
     when /^the edit courses page for schedule (.*) course (.*)$/i
         self.send('edit_schedule_course_path'.to_sym, $1, $2)
+
+    when /^the show course page for schedule (.*) course (.*)$/i
+        self.send('schedule_course_path'.to_sym, $1, $2)
 
     else
       begin

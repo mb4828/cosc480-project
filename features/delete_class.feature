@@ -1,3 +1,4 @@
+@javascript
 Feature: Delete a class
     As a student 
     So that I can remove a class that I no longer want on my schedule
@@ -15,17 +16,19 @@ Feature: Delete a class
 
         Given I am on the edit schedule page for schedule 0
         When I press "Delete" for "Software Engineering"
+        And I accept the alert
         Then I should be on the edit schedule page for schedule 0
         And I should not see "Software Engineering"
 
     Scenario: Delete one of the courses on the schedule
         Given these Courses:
-            |name                 |description |sun  |mon  |tue  |wed  |thu  |fri  |sat  |start  |end    |
-            |Software Engineering |COSC 480    |false|true |false|true |false|true |false|10:20am|11:10am|
-            |Algorithms           |COSC 302    |false|true |false|true |false|true |false|11:20am|12:10pm|
+            |name                 |description |sun  |mon  |tue  |wed  |thu  |fri  |sat  |start  |end    | schedule_id |
+            |Software Engineering |COSC 480    |false|true |false|true |false|true |false|10:20am|11:10am| 0           |
+            |Algorithms           |COSC 302    |false|true |false|true |false|true |false|11:20am|12:10pm| 0           |
 
         Given I am on the edit schedule page for schedule 0
         When I press "Delete" for "Algorithms"
+        And I accept the alert
         Then I should be on the edit schedule page for schedule 0
         And I should see "Software Engineering"
         But I should not see "Algorithms"
