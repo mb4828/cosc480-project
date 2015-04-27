@@ -24,13 +24,14 @@ Then(/^I should see "(.+)" (above|before) "(.+)"$/) do |earlier_content, descrip
 end
 
 When(/^I press "(.*?)" for "(.*?)"$/) do |button_name, source_text|
-    within(:xpath, ".//h4/text()[contains(.,\"#{source_text}\")]/../..") do
+    within(:xpath, "//h4[contains(text(), '#{source_text}')]/../..") do
         click_link(button_name)
     end
 end
 
 Then(/^I shouldn't be able to access the edit schedule page for schedule (\d+)$/) do |sid|
-  pending # express the regexp above with the code you wish you had
+   sched_path = send('edit_schedule_path'.to_sym, sid)
+   expect{visit(sched_path)}.to raise_error
 end
 
 When(/^I accept the alert$/) do

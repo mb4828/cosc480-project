@@ -8,12 +8,13 @@ class Course < ActiveRecord::Base
 
   def get_start_time
     m = self.start_time.match /^(?<shour>[1-9]|1[0-2]):(?<sminute>[0-5][0-9])(?<sm>[ap]m)$/
-    return [m['shour'].to_i, m['sminute'].to_i, m['sm']]
-   
+    return nil if not m
+    return [m['shour'].to_i, m['sminute'].to_i, m['sm']] 
   end
 
   def get_end_time
     m = self.end_time.match  /^(?<ehour>[1-9]|1[0-2]):(?<eminute>[0-5][0-9])(?<em>[ap]m)$/
+    return nil if not m
     return [m['ehour'].to_i, m['eminute'].to_i, m['em']]
   end
 
@@ -26,13 +27,17 @@ class Course < ActiveRecord::Base
   def start_before_end
     return if self.start_time == ""
     return if self.end_time == ""
-
+ 
     s = get_start_time
+    e = get_end_time
+
+    return if not s
+    return if not e
+
     shour = s[0]
     sminute = s[1]
     sm = s[2]
 
-    e = get_end_time
     ehour = e[0]
     eminute = e[1]
     em = e[2]
@@ -49,9 +54,10 @@ class Course < ActiveRecord::Base
   def start_in_range
       return if self.start_time == ""
       s = get_start_time
+      return if not s
+
       shour = s[0]
       sm = s[2]
-
       shour += 12 if sm == "pm" and shour != 12
       
       if not time_in_range(shour, sm == "am")
@@ -62,9 +68,10 @@ class Course < ActiveRecord::Base
   def end_in_range
       return if self.end_time == ""
       e = get_end_time
+      return if not e
+
       ehour = e[0]
       em = e[2]
-
       ehour += 12 if em == "pm" and ehour != 12
 
       if not time_in_range(ehour, em == "am")
