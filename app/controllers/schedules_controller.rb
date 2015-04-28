@@ -1,5 +1,7 @@
 class SchedulesController < ApplicationController
     include SchedulesHelper
+    api_token = '2d0c377b-282c-47e7-b9a1-8d9ea1450d6c'
+    @@client = Postmark::ApiClient.new(api_token)
 
     def index
     end
@@ -36,6 +38,15 @@ class SchedulesController < ApplicationController
         @schedule.locked = true
         @schedule.save
 
+        # send confirmation e-mail to user
+        @@client.deliver(
+            :subject => 'Your schedule link',
+            :to  => @user.email,
+            :from => 'mailbot@mattbrauner.com',
+            :html_body =>"Thank you for using College Schedulizer! You can access your schedule at the following URL: \ 
+            <a href='" + schedule_path + "' class='alert-link'>" + schedule_url + "</a>",
+            :track_opens => 'true'
+            )
         # redirect to a "permalink" which for now can just be the default route for the course
         redirect_to schedule_path
     end
