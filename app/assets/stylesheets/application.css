@@ -12,6 +12,7 @@
  *
  *= require normalize
  *= require bootstrap.min
+ *= require spectrum
  *= require style
  *= require_tree .
  *= require_self
