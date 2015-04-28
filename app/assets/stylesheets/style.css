@@ -89,7 +89,7 @@ h4 {
 }
 
 .formdisp {  /* box that contains the display elements for each course (the pretty version of the form) */
-    background: lightblue;
+    background-color: lightblue;
     transition: color 0.5s ease;
 }
 

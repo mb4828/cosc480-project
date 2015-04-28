@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require validator.min
+//= require spectrum
 //= require formscripts
 //= require schedulescripts
+//= spectrum_initialize
 //= require turbolinks
 //= require_tree .

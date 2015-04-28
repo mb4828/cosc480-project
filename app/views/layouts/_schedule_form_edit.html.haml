@@ -7,12 +7,12 @@
   %div#coursescontainer
     / course list
     - courses.each do |c|
-      %div.formbox.formdisp.noselect
+      %div.formbox.formdisp.noselect{:id => "disp-#{c.id}"}
         %div.dispbuttons
           = link_to edit_schedule_course_path(schedule.id, c.id), :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Edit' do
             %span.glyphicon.glyphicon-pencil
 
-          = link_to schedule_course_path(schedule.id, c.id), :method => :delete, :onclick => "return confirm('Are you sure?')", :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Delete' do
+          = link_to schedule_course_path(schedule.id, c.id), :method => :delete, :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Delete', :data => {confirm: 'Are you sure?'} do
             %span.glyphicon.glyphicon-trash
         
         %h4{:id => "course-#{c.id}-name"}= c.name
@@ -28,6 +28,7 @@
         %span{:id => "course-#{c.id}-sat", :style => "display:none"}= c.saturday
         %span{:id => "course-#{c.id}-start", :style => "display:none"}= c.start_time
         %span{:id => "course-#{c.id}-end", :style => "display:none"}= c.end_time
+        %span{:id => "course-#{c.id}-color", :style => "display:none"}= c.color
         %span{:class => "courseid", :style => "display:none", :data => {:id => c.id}}
       
     / button to add courses to the schedule

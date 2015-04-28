@@ -55,14 +55,14 @@ var schedulescripts = (function() {
 
     /* takes a day (e.g. "sun"), descriptive text, a start time string (e.g. "10:15am"), and an end time string and
      * creates a box in the appropriate day of the week column on the page */
-    makeBox: function(id, day, desc, start, end){
+    makeBox: function(id, day, desc, start, end, color){
       var startmin = this.getMinutes(start);
       var endmin = this.getMinutes(end);
 
       if (startmin == -1 || endmin == -1) return -1;     // something is invalid so give up
 
-      var offset = getOffset(startmin);
-      var height = getHeight(startmin, endmin);
+      var offset = this.getOffset(startmin);
+      var height = this.getHeight(startmin, endmin);
 
       if (height == -1) return -1;                       // something is invalid so give up
 
@@ -71,7 +71,7 @@ var schedulescripts = (function() {
                           "height:" + height + "px; " +
                           "top:" + offset + "px;" +
                           "line-height:" + height + "px;" +
-                          //"background: linear-gradient(" + colorLuminance(color, 0.2) + "," + colorLuminance(color, -0.2) + ");" +
+                          "background: linear-gradient(" + spectrum.colorLuminance(color, 0.2) + "," + spectrum.colorLuminance(color, -0.2) + ");" +
                       "'>" + desc + "</td></div>";
       $('#'+day).append(classbox);
     },
@@ -88,40 +88,41 @@ var schedulescripts = (function() {
         var desc = $("#course-"+id+"-desc").text();
         var start = $("#course-"+id+"-start").text();
         var end = $("#course-"+id+"-end").text();
-        //var color = $('#course-'+id+'-color').val();
+        var color = $('#course-'+id+'-color').val();
 
-        if ($("#course-"+id+"-sun").text() == "true") this.makeBox(id, 'sun', desc, start, end);
-        if ($("#course-"+id+"-mon").text() == "true") this.makeBox(id, 'mon', desc, start, end);
-        if ($("#course-"+id+"-tue").text() == "true") this.makeBox(id, 'tue', desc, start, end);
-        if ($("#course-"+id+"-wed").text() == "true") this.makeBox(id, 'wed', desc, start, end);
-        if ($("#course-"+id+"-thu").text() == "true") this.makeBox(id, 'thu', desc, start, end);
-        if ($("#course-"+id+"-fri").text() == "true") this.makeBox(id, 'fri', desc, start, end);
-        if ($("#course-"+id+"-sat").text() == "true") this.makeBox(id, 'sat', desc, start, end);
+        if (!color) color = "#ADD8E6";    // TODO: delte temporary code
 
-        // update form disp colors
-        //$('#disp'+id).css('background', 'linear-gradient('+ colorLuminance(color, 0.2) + "," + colorLuminance(color, -0.2) + ')');
+        if ($("#course-"+id+"-sun").text() == "true") this.makeBox(id, 'sun', desc, start, end, color);
+        if ($("#course-"+id+"-mon").text() == "true") this.makeBox(id, 'mon', desc, start, end, color);
+        if ($("#course-"+id+"-tue").text() == "true") this.makeBox(id, 'tue', desc, start, end, color);
+        if ($("#course-"+id+"-wed").text() == "true") this.makeBox(id, 'wed', desc, start, end, color);
+        if ($("#course-"+id+"-thu").text() == "true") this.makeBox(id, 'thu', desc, start, end, color);
+        if ($("#course-"+id+"-fri").text() == "true") this.makeBox(id, 'fri', desc, start, end, color);
+        if ($("#course-"+id+"-sat").text() == "true") this.makeBox(id, 'sat', desc, start, end, color);
 
-        // install mouseover handlers to do fancy highlighting magic
-        /*    
+        // update form disp colors - talks to spectrum_initialize.js (bad code, I know)
+        $('#disp-'+id).css('background-color', color).css('background', 'linear-gradient('+ spectrum.colorLuminance(color, 0.2) + "," + spectrum.colorLuminance(color, -0.2) + ')');
+
+        // install mouseover handlers to do fancy highlighting magic    
         function enter(){
-            $('.cbox'+id).css('background', 'linear-gradient('+ colorLuminance(color, 0.4) + "," + color + ')');
+            $('.cbox'+id).css('background', 'linear-gradient('+ spectrum.colorLuminance(color, 0.4) + "," + color + ')');
             $('.cbox'+id).css('border', '1px solid #DAA520');
-            $('#disp'+id).css('background', 'linear-gradient('+ colorLuminance(color, 0.4) + "," + color + ')');
-            $('#disp'+id).css('border', '1px solid #DAA520');
+            $('#disp-'+id).css('background', 'linear-gradient('+ spectrum.colorLuminance(color, 0.4) + "," + color + ')');
+            $('#disp-'+id).css('border', '1px solid #DAA520');
         }
 
         function leave(){
-            $('.cbox'+id).css('background', 'linear-gradient('+ colorLuminance(color, 0.2) + "," + colorLuminance(color, -0.2) + ')');
+            $('.cbox'+id).css('background', 'linear-gradient('+ spectrum.colorLuminance(color, 0.2) + "," + spectrum.colorLuminance(color, -0.2) + ')');
             $('.cbox'+id).css('border', '1px solid gray');
-            $('#disp'+id).css('background', 'linear-gradient('+ colorLuminance(color, 0.2) + "," + colorLuminance(color, -0.2) + ')');
-            $('#disp'+id).css('border', '1px solid gray');
+            $('#disp-'+id).css('background', 'linear-gradient('+ spectrum.colorLuminance(color, 0.2) + "," + spectrum.colorLuminance(color, -0.2) + ')');
+            $('#disp-'+id).css('border', '1px solid gray');
         }
         
         $('.cbox'+id).mouseenter(function(){enter()});
-        $('#disp'+id).mouseenter(function(){enter()});
+        $('#disp-'+id).mouseenter(function(){enter()});
         $('.cbox'+id).mouseleave(function(){leave()});
-        $('#disp'+id).mouseleave(function(){leave()});
-        */
+        $('#disp-'+id).mouseleave(function(){leave()});
+
         // disable selection
         $('.cbox'+id).addClass('noselect');
 
