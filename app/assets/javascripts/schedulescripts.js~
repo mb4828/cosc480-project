@@ -71,7 +71,7 @@ var schedulescripts = (function() {
                           "height:" + height + "px; " +
                           "top:" + offset + "px;" +
                           "line-height:" + height + "px;" +
-                          "background: linear-gradient(" + spectrum.colorLuminance(color, 0.2) + "," + spectrum.colorLuminance(color, -0.2) + ");" +
+                          "background: linear-gradient(" + myspectrum.colorLuminance(color, 0.2) + "," + myspectrum.colorLuminance(color, -0.2) + ");" +
                       "'>" + desc + "</td></div>";
       $('#'+day).append(classbox);
     },
@@ -88,9 +88,7 @@ var schedulescripts = (function() {
         var desc = $("#course-"+id+"-desc").text();
         var start = $("#course-"+id+"-start").text();
         var end = $("#course-"+id+"-end").text();
-        var color = $('#course-'+id+'-color').val();
-
-        if (!color) color = "#ADD8E6";    // TODO: delte temporary code
+        var color = $('#course-'+id+'-color').text();
 
         if ($("#course-"+id+"-sun").text() == "true") this.makeBox(id, 'sun', desc, start, end, color);
         if ($("#course-"+id+"-mon").text() == "true") this.makeBox(id, 'mon', desc, start, end, color);
@@ -100,21 +98,21 @@ var schedulescripts = (function() {
         if ($("#course-"+id+"-fri").text() == "true") this.makeBox(id, 'fri', desc, start, end, color);
         if ($("#course-"+id+"-sat").text() == "true") this.makeBox(id, 'sat', desc, start, end, color);
 
-        // update form disp colors - talks to spectrum_initialize.js (bad code, I know)
-        $('#disp-'+id).css('background-color', color).css('background', 'linear-gradient('+ spectrum.colorLuminance(color, 0.2) + "," + spectrum.colorLuminance(color, -0.2) + ')');
+        // update form disp colors - talks to myspectrum_initialize.js (bad code, I know)
+        $('#disp-'+id).css('background-color', color).css('background', 'linear-gradient('+ myspectrum.colorLuminance(color, 0.2) + "," + myspectrum.colorLuminance(color, -0.2) + ')');
 
         // install mouseover handlers to do fancy highlighting magic    
         function enter(){
-            $('.cbox'+id).css('background', 'linear-gradient('+ spectrum.colorLuminance(color, 0.4) + "," + color + ')');
+            $('.cbox'+id).css('background', 'linear-gradient('+ myspectrum.colorLuminance(color, 0.4) + "," + color + ')');
             $('.cbox'+id).css('border', '1px solid #DAA520');
-            $('#disp-'+id).css('background', 'linear-gradient('+ spectrum.colorLuminance(color, 0.4) + "," + color + ')');
+            $('#disp-'+id).css('background', 'linear-gradient('+ myspectrum.colorLuminance(color, 0.4) + "," + color + ')');
             $('#disp-'+id).css('border', '1px solid #DAA520');
         }
 
         function leave(){
-            $('.cbox'+id).css('background', 'linear-gradient('+ spectrum.colorLuminance(color, 0.2) + "," + spectrum.colorLuminance(color, -0.2) + ')');
+            $('.cbox'+id).css('background', 'linear-gradient('+ myspectrum.colorLuminance(color, 0.2) + "," + myspectrum.colorLuminance(color, -0.2) + ')');
             $('.cbox'+id).css('border', '1px solid gray');
-            $('#disp-'+id).css('background', 'linear-gradient('+ spectrum.colorLuminance(color, 0.2) + "," + spectrum.colorLuminance(color, -0.2) + ')');
+            $('#disp-'+id).css('background', 'linear-gradient('+ myspectrum.colorLuminance(color, 0.2) + "," + myspectrum.colorLuminance(color, -0.2) + ')');
             $('#disp-'+id).css('border', '1px solid gray');
         }
         

@@ -95,6 +95,11 @@
               %div.help-block.with-errors
                 = show_errors(course, :end_time)
 
+          %div.row.form-group
+            %div.col-md-4= f.label :color
+            %div.col-md-8
+              = f.text_field :color, :placeholder => 'Enter a hex color (e.g. #ffffff)', :class => 'spectrum-color, form-control', :id => 'color-field'
+
           %div.row{:style => 'text-align:center'}
             = link_to edit_schedule_path(params[:schedule_id]), :type => 'button', :class => 'btn btn-danger btn-sm', :onclick => "return confirm('All changes will be lost. Are you sure?')" do
               %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}

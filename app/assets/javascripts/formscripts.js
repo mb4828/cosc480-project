@@ -27,6 +27,7 @@ var formscripts = (function(){
         $('.bootstrap-button').show();
         this.setButtons();
         this.setCourseFormValidation();
+        myspectrum.init();  // initialize spectrum color box
     },
 
     /* toggles the actual checkboxes on and off for the days of the week buttons
@@ -53,10 +54,12 @@ var formscripts = (function(){
         // regular expressions
         var string_regex = '^.{1,30}$';
         var time_regex = '^([1-9]|1[0-2]):([0-5][0-9])[ap]m$';
+        var hex_regex = '^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$';
 
         // max characters
         var string_max = 30;
         var time_max = 7;
+        var hex_max = 7;
 
         // error messages
         var asterisk = "<span class='glyphicon glyphicon-asterisk' aria-hidden='true'></span> ";
@@ -64,12 +67,14 @@ var formscripts = (function(){
         var desc_error = asterisk + 'This field is required';
         var check_error = asterisk + 'Select at least one day';
         var time_error = asterisk + 'Format time like "1:23pm"';
+        var hex_error = asterisk + 'This field is required';
 
         // set up form fields
         $('#name-field').attr('pattern', string_regex).attr('maxlength', string_max).attr('required', true).attr('data-error', name_error);
         $('#desc-field').attr('pattern', string_regex).attr('maxlength', string_max).attr('required', true).attr('data-error', desc_error);
         $('#start-field').attr('pattern', time_regex).attr('maxlength', time_max).attr('required', true).attr('data-error', time_error);
         $('#end-field').attr('pattern', time_regex).attr('maxlength', time_max).attr('required', true).attr('data-error', time_error);
+        $('#color-field').attr('pattern', hex_regex).attr('maxlength', hex_max).attr('required', true).attr('data-error', hex_error);
 
         // add custom validation to checkboxes and submit button (at least one day must be checked)
         $('.bootstrap-button').click(function(){checkedAtLeastOne(check_error)});

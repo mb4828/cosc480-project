@@ -1,5 +1,5 @@
 /***
-Spectrum Colorpicker v1.6.0
+Spectrum Colorpicker v1.7.0
 https://github.com/bgrins/spectrum
 Author: Brian Grinstead
 License: MIT
@@ -363,20 +363,21 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 
 /* Replacer (the little preview div that shows up instead of the <input>) */
 .sp-replacer {
-    /*margin:0;
-    padding: 0;
-    border: 0;
-    background: none;
-    color: #337ab7;
+    margin:0;
     overflow:hidden;
     cursor:pointer;
+    padding: 4px;
     display:inline-block;
     *zoom: 1;
     *display: inline;
-    vertical-align: middle;*/
+    border: solid 1px #91765d;
+    background: #eee;
+    color: #333;
+    vertical-align: middle;
 }
 .sp-replacer:hover, .sp-replacer.sp-active {
-    /*color: #23527c;*/
+    border-color: #F0C49B;
+    color: #111;
 }
 .sp-replacer.sp-disabled {
     cursor:default;
@@ -503,5 +504,4 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     background-repeat:no-repeat;
     background-position: center;
     background-image: url(data:image/gif;base64,R0lGODlhFAAUAPcAAAAAAJmZmZ2dnZ6enqKioqOjo6SkpKWlpaampqenp6ioqKmpqaqqqqurq/Hx8fLy8vT09PX19ff39/j4+Pn5+fr6+vv7+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAP8ALAAAAAAUABQAAAihAP9FoPCvoMGDBy08+EdhQAIJCCMybCDAAYUEARBAlFiQQoMABQhKUJBxY0SPICEYHBnggEmDKAuoPMjS5cGYMxHW3IiT478JJA8M/CjTZ0GgLRekNGpwAsYABHIypcAgQMsITDtWJYBR6NSqMico9cqR6tKfY7GeBCuVwlipDNmefAtTrkSzB1RaIAoXodsABiZAEFB06gIBWC1mLVgBa0AAOw==);
-}
-
+}ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»ì»¿ì»

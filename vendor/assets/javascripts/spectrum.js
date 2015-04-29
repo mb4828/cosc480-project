@@ -1,4 +1,4 @@
-// Spectrum Colorpicker v1.6.0
+// Spectrum Colorpicker v1.7.0
 // https://github.com/bgrins/spectrum
 // Author: Brian Grinstead
 // License: MIT
@@ -33,7 +33,7 @@
         showInput: false,
         allowEmpty: false,
         showButtons: true,
-        clickoutFiresChange: false,
+        clickoutFiresChange: true,
         showInitial: false,
         showPalette: false,
         showPaletteOnly: false,
@@ -72,16 +72,11 @@
         style.cssText = 'background-color:rgba(0,0,0,.5)';
         return contains(style.backgroundColor, 'rgba') || contains(style.backgroundColor, 'hsla');
     })(),
-    inputTypeColorSupport = (function() {
-        var colorInput = $("<input type='color' value='!' />")[0];
-        return colorInput.type === "color" && colorInput.value !== "!";
-    })(),
     replaceInput = [
-        //"<div class='sp-replacer'>",
-            "<button type='button' class='btn btn-link btn-xs sp-replacer' data-toggle='tooltip' data-placement='bottom' title='Color'><span class='glyphicon glyphicon-th'></span></button>"
-            //"<div class='sp-preview'><div class='sp-preview-inner'></div></div>",
-            //"<div class='sp-dd'>&#9660;</div>",
-        //"</div>"
+        "<div class='sp-replacer'>",
+            "<div class='sp-preview'><div class='sp-preview-inner'></div></div>",
+            "<div class='sp-dd'>&#9660;</div>",
+        "</div>"
     ].join(''),
     markup = (function () {
 
@@ -190,6 +185,7 @@
             callbacks = opts.callbacks,
             resize = throttle(reflow, 10),
             visible = false,
+            isDragging = false,
             dragWidth = 0,
             dragHeight = 0,
             dragHelperHeight = 0,
@@ -231,7 +227,7 @@
             chooseButton = container.find(".sp-choose"),
             toggleButton = container.find(".sp-palette-toggle"),
             isInput = boundElement.is("input"),
-            isInputTypeColor = isInput && inputTypeColorSupport && boundElement.attr("type") === "color",
+            isInputTypeColor = isInput && boundElement.attr("type") === "color" && inputTypeColorSupport(),
             shouldReplace = isInput && !flat,
             replacer = (shouldReplace) ? $(replaceInput).addClass(theme).addClass(opts.className).addClass(opts.replacerClassName) : $([]),
             offsetElement = (shouldReplace) ? replacer : boundElement,
@@ -360,6 +356,10 @@
             chooseButton.bind("click.spectrum", function (e) {
                 e.stopPropagation();
                 e.preventDefault();
+
+                if (IE && textInput.is(":focus")) {
+                    textInput.trigger('change');
+                }
 
                 if (isValid()) {
                     updateOriginalInput(true);
@@ -563,12 +563,14 @@
             if (dragHeight <= 0 || dragWidth <= 0 || slideHeight <= 0) {
                 reflow();
             }
+            isDragging = true;
             container.addClass(draggingClass);
             shiftMovementDirection = null;
             boundElement.trigger('dragstart.spectrum', [ get() ]);
         }
 
         function dragStop() {
+            isDragging = false;
             container.removeClass(draggingClass);
             boundElement.trigger('dragstop.spectrum', [ get() ]);
         }
@@ -619,6 +621,7 @@
             hideAll();
             visible = true;
 
+            $(doc).bind("keydown.spectrum", onkeydown);
             $(doc).bind("click.spectrum", clickout);
             $(window).bind("resize.spectrum", resize);
             replacer.addClass("sp-active");
@@ -634,9 +637,20 @@
             boundElement.trigger('show.spectrum', [ colorOnShow ]);
         }
 
+        function onkeydown(e) {
+            // Close on ESC
+            if (e.keyCode === 27) {
+                hide();
+            }
+        }
+
         function clickout(e) {
             // Return on right click.
             if (e.button == 2) { return; }
+
+            // If a drag event was happening during the mouseup, don't hide
+            // on click.
+            if (isDragging) { return; }
 
             if (clickoutFiresChange) {
                 updateOriginalInput(true);
@@ -652,6 +666,7 @@
             if (!visible || flat) { return; }
             visible = false;
 
+            $(doc).unbind("keydown.spectrum", onkeydown);
             $(doc).unbind("click.spectrum", clickout);
             $(window).unbind("resize.spectrum", resize);
 
@@ -1044,9 +1059,9 @@
                     return stop();
                 }
 
-                var touches = e.originalEvent && e.originalEvent.touches;
-                var pageX = touches ? touches[0].pageX : e.pageX;
-                var pageY = touches ? touches[0].pageY : e.pageY;
+                var t0 = e.originalEvent && e.originalEvent.touches && e.originalEvent.touches[0];
+                var pageX = t0 && t0.pageX || e.pageX;
+                var pageY = t0 && t0.pageY || e.pageY;
 
                 var dragX = Math.max(0, Math.min(pageX - offset.left, maxWidth));
                 var dragY = Math.max(0, Math.min(pageY - offset.top, maxHeight));
@@ -1073,9 +1088,7 @@
                     $(doc).bind(duringDragEvents);
                     $(doc.body).addClass("sp-dragging");
 
-                    if (!hasTouch) {
-                        move(e);
-                    }
+                    move(e);
 
                     prevent(e);
                 }
@@ -1086,7 +1099,12 @@
             if (dragging) {
                 $(doc).unbind(duringDragEvents);
                 $(doc.body).removeClass("sp-dragging");
-                onstop.apply(element, arguments);
+
+                // Wait a tick before notifying observers to allow the click event
+                // to fire in Chrome.
+                setTimeout(function() {
+                    onstop.apply(element, arguments);
+                }, 0);
             }
             dragging = false;
         }
@@ -1105,6 +1123,10 @@
             if (debounce) clearTimeout(timeout);
             if (debounce || !timeout) timeout = setTimeout(throttler, wait);
         };
+    }
+
+    function inputTypeColorSupport() {
+        return $.fn.spectrum.inputTypeColorSupport();
     }
 
     /**
@@ -1160,20 +1182,28 @@
     $.fn.spectrum.loadOpts = {};
     $.fn.spectrum.draggable = draggable;
     $.fn.spectrum.defaults = defaultOpts;
+    $.fn.spectrum.inputTypeColorSupport = function inputTypeColorSupport() {
+        if (typeof inputTypeColorSupport._cachedResult === "undefined") {
+            var colorInput = $("<input type='color' value='!' />")[0];
+            inputTypeColorSupport._cachedResult = colorInput.type === "color" && colorInput.value !== "!";
+        }
+        return inputTypeColorSupport._cachedResult;
+    };
 
     $.spectrum = { };
     $.spectrum.localization = { };
     $.spectrum.palettes = { };
 
     $.fn.spectrum.processNativeColorInputs = function () {
-        if (!inputTypeColorSupport) {
-            $("input[type=color]").spectrum({
+        var colorInputs = $("input[type=color]");
+        if (colorInputs.length && !inputTypeColorSupport()) {
+            colorInputs.spectrum({
                 preferredFormat: "hex6"
             });
         }
     };
 
-    // TinyColor v1.1.1
+    // TinyColor v1.1.2
     // https://github.com/bgrins/TinyColor
     // Brian Grinstead, MIT License
 
@@ -1188,7 +1218,7 @@
         mathMax = math.max,
         mathRandom = math.random;
 
-    var tinycolor = function tinycolor (color, opts) {
+    var tinycolor = function(color, opts) {
 
         color = (color) ? color : '';
         opts = opts || { };
@@ -2278,7 +2308,6 @@
     window.tinycolor = tinycolor;
     })();
 
-
     $(function () {
         if ($.fn.spectrum.load) {
             $.fn.spectrum.processNativeColorInputs();
@@ -2286,4 +2315,3 @@
     });
 
 });
-

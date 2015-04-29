@@ -61,7 +61,7 @@ class CoursesController < ApplicationController
 
 private
     def create_update_params
-        params.require(:course).permit(:name, :description, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :start_time, :end_time)
+        params.require(:course).permit(:name, :description, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :start_time, :end_time, :color)
     end
 
 end
