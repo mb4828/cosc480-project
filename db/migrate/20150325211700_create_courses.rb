@@ -14,7 +14,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :end_time, limit: 8
       t.string :color, limit: 8
       t.integer :ordering
-      t.integer :schedule_id
+      t.integer :schedule_id, limit: 10
       t.timestamps null: false
     end
   end
