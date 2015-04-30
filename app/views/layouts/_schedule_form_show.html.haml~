@@ -1,7 +1,7 @@
 %div.col-md-4.formcontainer
   %div#formheader
     %div.addthis_sharing_toolbox
-      %h4 Share your schedule:
+      %h5 Share your schedule:
 
   %div#coursescontainer
     / course list
@@ -20,5 +20,6 @@
         %span{:id => "course-#{c.id}-sat", :style => "display:none"}= c.saturday
         %span{:id => "course-#{c.id}-start", :style => "display:none"}= c.start_time
         %span{:id => "course-#{c.id}-end", :style => "display:none"}= c.end_time
+        %span{:id => "course-#{c.id}-color", :style => "display:none"}= c.color
         %span{:class => "courseid", :style => "display:none", :data => {:id => c.id}}
 

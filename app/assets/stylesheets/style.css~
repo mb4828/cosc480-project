@@ -5,6 +5,11 @@ body {
     background: url("biggrid.png") #eeeeee; 
 }
 
+img.index-img{
+    width: 100%;
+    padding: 30px;
+}
+
 .container {
     background-color: #D0E5C0;
     border-left: 1px solid lightgray; 
@@ -89,7 +94,7 @@ h4 {
 }
 
 .formdisp {  /* box that contains the display elements for each course (the pretty version of the form) */
-    background: lightblue;
+    background-color: lightblue;
     transition: color 0.5s ease;
 }
 

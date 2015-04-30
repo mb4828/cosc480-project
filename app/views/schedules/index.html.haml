@@ -1,0 +1,16 @@
+%div.row
+  %div.col-md-12
+    %h3 Welcome!
+
+%div.row
+  %div.col-md-6
+    = image_tag("sched.png", class: "index-img")
+  %div.col-md-6
+    %div.jumbotron
+      %h2 The scheduling app for college students
+      %p Ever had trouble organizing your classes? College schedulizer allows you to create a visual version of your schedule. Save your schedule for later and even share it with friends. It's up to you!
+      %p
+        = link_to new_schedule_path, :type => 'button', :class => 'btn btn-primary btn-lg' do
+          Ready to get started?
+    
+
