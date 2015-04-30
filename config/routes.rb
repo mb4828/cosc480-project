@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    root 'schedules#new'
+    root 'schedules#index'
     
     resources :schedules do
         resources :courses
