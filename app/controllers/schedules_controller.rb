@@ -40,7 +40,7 @@ class SchedulesController < ApplicationController
               :to  => @user.email,
               :from => 'mailbot@mattbrauner.com',
               :html_body =>"Thank you for using College Schedulizer! You can access your schedule at the following URL: \ 
-              <a href='" + schedule_path + "' class='alert-link'>" + schedule_url + "</a>",
+              <a href='" + schedule_url + "' class='alert-link'>" + schedule_url + "</a>",
               :track_opens => 'true'
               )
         end
