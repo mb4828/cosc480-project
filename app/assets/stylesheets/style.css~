@@ -5,9 +5,8 @@ body {
     background: url("biggrid.png") #eeeeee; 
 }
 
-img.index-img{
+img.index-img {
     width: 100%;
-    padding: 30px;
 }
 
 .container {
@@ -31,7 +30,7 @@ img.index-img{
   border-radius: 5px;
 }
 
-.footer {
+.footer {c
   margin: 0;
   padding: 20px;
   border: 0;

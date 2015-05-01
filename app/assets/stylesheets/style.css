@@ -1,11 +1,9 @@
-@import url(http://fonts.googleapis.com/css?family=Cutive|Nunito);
-
 body { 
     font-family: "Nunito", sans-serif;
     background: url("biggrid.png") #eeeeee; 
 }
 
-img.index-img{
+img.index-img {
     width: 100%;
 }
 
@@ -30,7 +28,7 @@ img.index-img{
   border-radius: 5px;
 }
 
-.footer {
+.footer {c
   margin: 0;
   padding: 20px;
   border: 0;

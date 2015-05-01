@@ -11,6 +11,7 @@
 
     / stylesheets
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    %link{:href => 'http://fonts.googleapis.com/css?family=Cutive|Nunito', :rel => 'stylesheet', :type => 'text/css'}
 
     / scripts (most should be placed at the bottom for efficiency's sake!
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
@@ -18,9 +19,6 @@
     = csrf_meta_tags
   %body
        
-    / addthis
-    %script{:async => "async", :src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-552304d5563823ba", :type => "text/javascript"}
-
     %div.container
       %div.page-header.noselect
         = image_tag("biglogo.png", class: "sitelogo")
@@ -53,7 +51,8 @@
         %br
         Software Engineering, Colgate University
 
-      
+    / addthis
+    %script{:async => "async", :src => "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-552304d5563823ba", :type => "text/javascript"}
 
 
 
