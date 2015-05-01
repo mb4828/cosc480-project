@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150325211700) do
     t.string   "end_time",    limit: 8
     t.string   "color",       limit: 8
     t.integer  "ordering"
-    t.integer  "schedule_id", limit: 10
+    t.integer  "schedule_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

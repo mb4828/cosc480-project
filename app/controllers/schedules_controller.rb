@@ -47,7 +47,6 @@ class SchedulesController < ApplicationController
     end
 
     def show
-
         @schedule = Schedule.find(params[:id])
         @courses = @schedule.courses
         @user = @schedule.user

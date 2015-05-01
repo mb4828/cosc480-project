@@ -16,7 +16,7 @@ class CoursesController < ApplicationController
       @schedule = Schedule.find(params[:schedule_id])
       @course = Course.new(create_update_params)
       # set additional fields (don't forget to set order!!)
-      @course.schedule_id = params[:schedule_id]
+      @course.schedule_id = @schedule.id
       @course.save
 
       if @course.save
@@ -47,10 +47,9 @@ class CoursesController < ApplicationController
     end
 
     def destroy
-        cid = params[:id]
-        c = Course.find(cid)
+        c = Course.find(params[:id])
         c.destroy
-        if not Course.exists?(cid)
+        if not Course.exists?(c)
           flash[:notice] = "#{c.name} successfully removed"
           redirect_to edit_schedule_path params[:schedule_id]
         else

@@ -6,7 +6,7 @@
   %div#coursescontainer
     / course list
     - courses.each do |c|
-      %div.formbox.formdisp.noselect
+      %div.formbox.formdisp.noselect{:id => "disp-#{c.id}"}
         %h4{:id => "course-#{c.id}-name"}= c.name
         %h5{:id => "course-#{c.id}-desc"}= c.description
         %p= c.get_tag

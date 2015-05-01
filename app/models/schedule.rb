@@ -1,5 +1,5 @@
 class Schedule < ActiveRecord::Base
-  #obfuscate_id #TODO make it work together with view
+  obfuscate_id #TODO make it work together with view
   has_many :courses
   belongs_to :user
 

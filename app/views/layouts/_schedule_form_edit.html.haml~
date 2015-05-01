@@ -9,10 +9,10 @@
     - courses.each do |c|
       %div.formbox.formdisp.noselect{:id => "disp-#{c.id}"}
         %div.dispbuttons
-          = link_to edit_schedule_course_path(schedule.id, c.id), :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Edit' do
+          = link_to edit_schedule_course_path(schedule., c), :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Edit' do
             %span.glyphicon.glyphicon-pencil
 
-          = link_to schedule_course_path(schedule.id, c.id), :method => :delete, :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Delete', :data => {confirm: 'Are you sure?'} do
+          = link_to schedule_course_path(schedule, c), :method => :delete, :class => "btn btn-link btn-xs", 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'Delete', :data => {confirm: 'Are you sure?'} do
             %span.glyphicon.glyphicon-trash
         
         %h4{:id => "course-#{c.id}-name"}= c.name
