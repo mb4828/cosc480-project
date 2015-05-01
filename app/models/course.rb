@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  obfuscate_id #TODO fix this with the view
+  obfuscate_id if Rails.env != 'test'
   belongs_to :schedule
   validates :name, presence: { message: "Course name required" }
   validates :description, presence: { message: "Course description required" }

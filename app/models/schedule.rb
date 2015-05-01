@@ -1,5 +1,5 @@
 class Schedule < ActiveRecord::Base
-  obfuscate_id #TODO make it work together with view
+  obfuscate_id if Rails.env != 'test'
   has_many :courses
   belongs_to :user
 

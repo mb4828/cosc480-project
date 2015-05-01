@@ -5,7 +5,7 @@ Feature: Load landing page
 
 Scenario: Jump to blank schedule page
     Given I am on the landing page
-    When I follow "Click here to create schedule"
+    When I follow "Ready to get started?"
     Then I should be on the new schedule page
 
 

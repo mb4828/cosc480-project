@@ -22,6 +22,9 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
+    when /^the landing page$/i
+      '/'
+
     when /^the new schedule page$/i
         self.send('new_schedule_path'.to_sym)
 

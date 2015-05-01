@@ -34,14 +34,17 @@ class SchedulesController < ApplicationController
         @schedule.save
 
         # send confirmation e-mail to user
-        @@client.deliver(
-            :subject => 'Your schedule link',
-            :to  => @user.email,
-            :from => 'mailbot@mattbrauner.com',
-            :html_body =>"Thank you for using College Schedulizer! You can access your schedule at the following URL: \ 
-            <a href='" + schedule_path + "' class='alert-link'>" + schedule_url + "</a>",
-            :track_opens => 'true'
-            )
+        if Rails.env != 'test'
+          @@client.deliver(
+              :subject => 'Your schedule link',
+              :to  => @user.email,
+              :from => 'mailbot@mattbrauner.com',
+              :html_body =>"Thank you for using College Schedulizer! You can access your schedule at the following URL: \ 
+              <a href='" + schedule_path + "' class='alert-link'>" + schedule_url + "</a>",
+              :track_opens => 'true'
+              )
+        end
+
         # redirect to a "permalink" which for now can just be the default route for the course
         redirect_to schedule_path
     end
